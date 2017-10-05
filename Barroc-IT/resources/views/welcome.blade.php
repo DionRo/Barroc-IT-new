@@ -1,95 +1,96 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+require('../../App/database.php');
+//if(isset($_SESSION['username']) ) {
+//    header("Location: ../index.php");
+//}
+if(isset($_POST['submit-login'])){
+    $errMsg = '';
 
-        <title>Laravel</title>
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    if($username == '')
+        $errMsg .= 'You must enter your Username';
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
+    if($password == '')
+        $errMsg .= 'You must enter your Password';
+
+
+    if($errMsg == ''){
+        $sql = "SELECT username,password FROM  `tbl_users` WHERE username = :username AND password = :password";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if(count($results) >= 1){
+
+            $_SESSION['username'] = $results[0]['username'];
+            header('location:../index.php');
+        }else{
+            $errMsg .= 'Username and Password are not found';
+        }
+    }
+}
+?>
+        <!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Barroc-IT</title>
+    <meta name="description"
+          content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.scss">
+</head>
+<body class="login">
+
+<div class="form">
+    <ul class="tab-group">
+        <li class="tab active"><a href="#login">Log In</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="login">
+            <h1>Welcome,</h1>
+            <?php
+            if(isset($errMsg)){
+                echo '<div style="color:#FF0000;text-align:center;font-size:16px;margin: 10px;">'.$errMsg.'</div>';
             }
-
-            .full-height {
-                height: 100vh;
+            if(isset($successMsg)){
+                echo '<div style="color:#00ff00;text-align:center;font-size:12px;">'.$successMsg.'</div>';
             }
+            ?>
+            <form action="" method="post">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="field-wrap">
+                    <label>
+                        Username<span class="req">*</span>
+                    </label>
+                    <input type="text" name="username" required autocomplete="off"/>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="field-wrap">
+                    <label>
+                        Password<span class="req">*</span>
+                    </label>
+                    <input type="password" name="password" required autocomplete="off"/>
                 </div>
-            </div>
-        </div>
-    </body>
-</html>
+
+                <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                <input type="submit" name='submit-login' value="Log In" class='button button-block'/>
+
+            </form>
+        </div><!-- tab-content -->
+
+    </div> <!-- /form -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="../assets/js/index.js"></script>
