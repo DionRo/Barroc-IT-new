@@ -265,7 +265,7 @@ table{
 }
 /*ACTIVE*/
 .active{
-    padding: 80px 0;
+    margin: 60px 0;
     background: rgb(219, 218, 212);
 }
 .sales-active{

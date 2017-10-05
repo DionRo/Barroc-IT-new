@@ -1,5 +1,4 @@
 <?php
-require('../../App/database.php');
 //if(isset($_SESSION['username']) ) {
 //    header("Location: ../index.php");
 //}
@@ -92,5 +91,4 @@ if(isset($_POST['submit-login'])){
 
     </div> <!-- /form -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
     <script src="../assets/js/index.js"></script>

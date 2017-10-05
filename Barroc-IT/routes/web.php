@@ -11,6 +11,10 @@
 |
 */
 
+route::get('/', function (){
+    return view('welcome');
+});
+
 
 Route::resource('admin' ,'adminpanelController');
 Route::resource('development' ,'developmentController');
