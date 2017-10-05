@@ -1,38 +1,4 @@
-<?php
-//if(isset($_SESSION['username']) ) {
-//    header("Location: ../index.php");
-//}
-if(isset($_POST['submit-login'])){
-    $errMsg = '';
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    if($username == '')
-        $errMsg .= 'You must enter your Username';
-
-    if($password == '')
-        $errMsg .= 'You must enter your Password';
-
-
-    if($errMsg == ''){
-        $sql = "SELECT username,password FROM  `tbl_users` WHERE username = :username AND password = :password";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if(count($results) >= 1){
-
-            $_SESSION['username'] = $results[0]['username'];
-            header('location:../index.php');
-        }else{
-            $errMsg .= 'Username and Password are not found';
-        }
-    }
-}
-?>
-        <!doctype html>
+<!doctype html>
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
@@ -52,22 +18,15 @@ if(isset($_POST['submit-login'])){
 
 <div class="form">
     <ul class="tab-group">
-        <li class="tab active"><a href="#login">Log In</a></li>
+        <li class="tab active"><a id="hidden-button" href="#login">Log In</a></li>
     </ul>
 
     <div class="tab-content">
         <div id="login">
-            <h1>Welcome,</h1>
-            <?php
-            if(isset($errMsg)){
-                echo '<div style="color:#FF0000;text-align:center;font-size:16px;margin: 10px;">'.$errMsg.'</div>';
-            }
-            if(isset($successMsg)){
-                echo '<div style="color:#00ff00;text-align:center;font-size:12px;">'.$successMsg.'</div>';
-            }
-            ?>
-            <form action="" method="post">
+            <h1>WELCOME @ BARROC-IT</h1>
 
+            <form action="" method="post">
+                {{csrf_field()}}
                 <div class="field-wrap">
                     <label>
                         Username<span class="req">*</span>
@@ -82,8 +41,6 @@ if(isset($_POST['submit-login'])){
                     <input type="password" name="password" required autocomplete="off"/>
                 </div>
 
-                <p class="forgot"><a href="#">Forgot Password?</a></p>
-
                 <input type="submit" name='submit-login' value="Log In" class='button button-block'/>
 
             </form>
@@ -91,4 +48,4 @@ if(isset($_POST['submit-login'])){
 
     </div> <!-- /form -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="../assets/js/index.js"></script>
+    <script src="js/index.js"></script>
