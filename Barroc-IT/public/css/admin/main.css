@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 10px;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+h1{
+    font-size: 4em;
+    color: #93D3CC;
+}
+.space-between{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+}
+.align-center{
+    -ms-align-items: center;
+    align-items: center;
+}
+.container{
+    margin: 0 auto;
+}
+/*HEADER*/
+.title{
+    background: #006366;
+    padding: 20px 110px;
+}
+.logout{
+    font-size: 1.5em;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(90, 90, 90);
+    background: #93D3CC;
+    color: rgb(90, 90, 90);
+    cursor: pointer;
+}
+.navigation{
+    background: #93D3CC;
+    padding: 10px 60px;
+}
+.navigation nav a{
+    font-size: 1.5em;
+    color: rgb(120, 120, 120);
+}
+.navigation nav li{
+    border-right: 1px solid #006366;
+    padding: 0 50px;
+}
+.navigation nav .no-border{
+    border: none;
+}
+.search{
+    background: #FFF;
+    border-radius: 15px;
+    border: 1px solid rgb(120, 120, 120);
+    padding: 5px;
+    margin: 0 50px 0 0;
+}
+.search-button{
+    background: url('../img/search.png') no-repeat center;
+    padding: 3px 10px;
+    border: none;
+    cursor: pointer;
+}
+.search-input{
+    border: none;
+    width: 200px;
+    padding: 0 0 0 5px;
+}
+.text, .select {
+    width: 450px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit {
+    width: 450px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #45a049;
+}
+
+.pagenation-item{
+
+    width: 425px;
+    padding: 11px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ffffff;
+    position: relative;
+    text-align: center;
+}
+
+.pagenation-item:hover .delete{
+    display: block;
+}
+.pagenation-item:hover .adjust{
+    display: block;
+}
+.pagenation-item:hover .done{
+    display: block;
+}
+.left{
+    width: 465px;
+}
+
+.delete{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgb(120, 120, 120);
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+.adjust{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgb(120, 120, 120);
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+
+.done{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgb(120, 120, 120);
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+
+.main-content{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.pagenation a {
+    padding: 5px 10px;
+    background: #4CAF50;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+
+}
+.divide-light{
+    background: rgb(219, 218, 212);
+    background-size: cover;
+}
+
+td{
+    font-size: 1.5em;
+}
+tr{
+    background: rgb(220, 220, 220);
+    padding: 10px 15px;
+    border-top: 1px solid rgb(120, 120, 120);
+}
+table{
+    border: none;
+    border-bottom: 1px solid rgb(120, 120, 120);
+}
+.title-table{
+    background: rgb(210, 210, 210);
+}
+.title-table td{
+    font-size: 1.7em;
+    font-style: bold;
+}
+/*Active*/
+.main-content{
+    padding: 80px 0;
+}
+.sales-active{
+    width: 55%;
+    background: #FFF;
+}
+.sales-information{
+    background: rgb(220, 220, 220);
+    border-top: 1px solid rgb(120, 120, 120);
+    border-bottom: 1px solid rgb(120, 120, 120);
+    width: 400px;
+}
+.sales-information ul{
+    padding: 15px;
+}
+.sales-information li{
+    font-size: 1.5em;
+    padding: 10px 20px 0 0;
+}
+
