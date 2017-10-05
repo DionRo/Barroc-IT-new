@@ -12,7 +12,7 @@
 */
 
 
-Route::resource('admin' ,'adminController');
+Route::resource('admin' ,'adminpanelController');
 Route::resource('development' ,'developmentController');
 Route::resource('finance' ,'financeController');
 Route::resource('sales' ,'saleController');
