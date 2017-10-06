@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Faker\Factory;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 
 class adminpanelController extends Controller
@@ -19,7 +21,7 @@ class adminpanelController extends Controller
     public function index()
     {
 
-        $staff = DB::table('tbl_staff')->paginate(5);
+        $staff = DB::table('tbl_staff')->paginate(100);
 
         return view('admin/index', ['staff' => $staff] );
     }

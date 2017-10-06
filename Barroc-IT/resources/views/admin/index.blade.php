@@ -1,5 +1,6 @@
 @include('/header/admin/index')
 
+
 <div class="container divide-light">
     <div class="main-content">
         <div class="left">
@@ -7,8 +8,16 @@
             <h2>CREATE USER</h2>
             <form action="../app/user_manager.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input class="text" type="text" class="form-control" name="username" placeholder="Fill in the username!">
+                    <label for="username">Username:</label>
+                    <input class="text" type="text" class="form-control" name="username" placeholder="Fill in the username!">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input class="text" type="password" class="form-control" name="password" placeholder="Fill in the password!">
+                </div>
+                <div class="form-group">
+                    <label for="email">email:</label>
+                    <input class="text" type="email" class="form-control" name="email" placeholder="Fill in the email!">
                 </div>
                 <div class="form-group">
                     <label for="name">Firstname:</label>
@@ -39,11 +48,6 @@
                     <input class="text" type="text" class="form-control" name="country" placeholder="Fill in the country!">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input class="text" type="password" class="form-control" name="password" placeholder="Fill in the password!">
-                </div>
-
-                <div class="form-group">
                     <input type="submit" value="Create a user!" class="submit" name="register">
                 </div>
                 <!-- alle datums in een optie veld -->
@@ -57,8 +61,6 @@
                     {{ $staff->username }}
                 @endforeach
             </div>
-
-            {{ $staff->links() }}
         </div>
     </div>
 </div>
