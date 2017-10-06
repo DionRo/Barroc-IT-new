@@ -36,9 +36,10 @@ class adminpanelController extends Controller
         for( $x = 0 ; $x < 100;$x++)
         {
             $admin = new Admin();
-            $admin->staffNr = $x;
+            $admin->username = $faker->userName;
+            $admin->password = $faker->password;
+            $admin->email = $faker->email;
             $admin->adminLevel = 0;
-            $admin->username = $faker->email;
             $admin->firstName = $faker->firstName;
             $admin->lastName = $faker->lastName;
             $admin->adress = $faker->streetAddress;
