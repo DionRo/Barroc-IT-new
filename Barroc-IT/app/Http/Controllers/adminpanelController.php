@@ -13,7 +13,10 @@ class adminpanelController extends Controller
      */
     public function index()
     {
-        //
+
+        $staff = DB::table('tbl_staff')->paginate(5);
+
+        return view('admin/index', ['users' => $staff] );
     }
 
     /**
