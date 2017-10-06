@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Faker\Factory;
+
 
 class adminpanelController extends Controller
 {
@@ -16,7 +21,7 @@ class adminpanelController extends Controller
 
         $staff = DB::table('tbl_staff')->paginate(5);
 
-        return view('admin/index', ['users' => $staff] );
+        return view('admin/index', ['staff' => $staff] );
     }
 
     /**
@@ -26,7 +31,21 @@ class adminpanelController extends Controller
      */
     public function create()
     {
-        //
+        $faker = Factory::create();
+
+        for( $x = 0 ; $x < 100;$x++)
+        {
+            $admin = new Admin();
+            $admin->staffNr = $x;
+            $admin->adminLevel = 0;
+            $admin->username = $faker->email;
+            $admin->firstName = $faker->firstName;
+            $admin->lastName = $faker->lastName;
+            $admin->adress = $faker->streetAddress;
+            $admin->zipcode = $faker->postcode;
+            $admin->country = $faker->country;
+            $admin->save();
+        }
     }
 
     /**
@@ -37,7 +56,7 @@ class adminpanelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
