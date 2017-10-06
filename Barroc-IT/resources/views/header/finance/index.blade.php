@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Barroc-IT Finance</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="/css/finance/main.css">
 </head>
 <body>
 

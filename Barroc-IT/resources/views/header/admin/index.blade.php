@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Barroc-IT Admin</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="/css/admin/main.css">
 </head>
 <body>
 
 <header>
     <div class="title space-between align-center">
         <h1>Admin</h1>
-        <form action="../../login/index.php">
+        <form action="#">
             <input class="logout" type="button" name="logout" value="logout">
         </form>
     </div>
