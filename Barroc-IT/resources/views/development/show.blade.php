@@ -1,13 +1,112 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show Orders</title>
-</head>
-<body>
-<p>Hallo ik ben de show order</p>
-</body>
-</html>
+@include('/header/development/index')
+
+<div class="main-content">
+    <div class="active">
+        <div class="container">
+            <h2><span class="title-green">Active</span> Customers</h2>
+            <div class="space-between">
+                <table class="sales-active" cellspacing="0" cellpadding="0">
+                    <tr class="space-between title-table">
+
+                        <td>Name</td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+
+                    </tr>
+                    <tr class="space-between">
+                        <td>
+                            <a class="showinfo">Name</a>
+                        </td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr class="space-between">
+                        <td>Name</td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr class="space-between">
+                        <td>Name</td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                </table>
+                <div class="sales-information flex">
+                    <ul>
+                        <li>First Name:</li>
+                        <li>Last Name:</li>
+                        <li>Customer Number:</li>
+                        <li>Email:</li>
+                        <li>Phone Number:</li>
+                        <li>Address:</li>
+                        <li>Postal Code:</li>
+                        <li>Description:</li>
+                    </ul>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inactive">
+        <div class="container">
+            <h2><span class="title-orange">Hold</span> Customers</h2>
+            <div class="space-between">
+                <div class="sales-information flex">
+                    <ul>
+                        <li>First Name:</li>
+                        <li>Last Name:</li>
+                        <li>Customer Number:</li>
+                        <li>Email:</li>
+                        <li>Phone Number:</li>
+                        <li>Address:</li>
+                        <li>Postal Code:</li>
+                        <li>Description:</li>
+                    </ul>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <table class="sales-inactive" cellspacing="0" cellpadding="0">
+                    <tr class="space-between title-table">
+                        <td>Name</td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr class="space-between">
+                        <td><a class="showinfo">Name</a></td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr class="space-between">
+                        <td>Name</td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr class="space-between">
+                        <td>Name</td>
+                        <td>Customer number</td>
+                        <td>Status</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@include('/footer/index')

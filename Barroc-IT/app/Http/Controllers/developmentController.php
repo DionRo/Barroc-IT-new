@@ -13,7 +13,7 @@ class developmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('development/show');
     }
 
     /**

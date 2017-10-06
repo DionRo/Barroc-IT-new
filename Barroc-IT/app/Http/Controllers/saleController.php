@@ -23,7 +23,7 @@ class saleController extends Controller
      */
     public function create()
     {
-        //
+        return view('sales/add');
     }
 
     /**
@@ -56,7 +56,7 @@ class saleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('sales/edit');
     }
 
     /**

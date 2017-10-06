@@ -17,9 +17,9 @@
     <div class="navigation space-between align-center">
         <nav>
             <ul class="space-between">
-                <li><a href="/sales/index">Customers</a></li>
-                <li><a href="/sales/add">Add Customers</a></li>
-                <li class="no-border"><a href="/sales/edit">Edit Customers</a></li>
+                <li><a href="/sales">Customers</a></li>
+                <li><a href="/sales/create">Add Customers</a></li>
+                <li class="no-border"><a href="/sales/{sale}/edit">Edit Customers</a></li>
             </ul>
         </nav>
         <?php
