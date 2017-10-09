@@ -235,3 +235,68 @@ table{
     padding: 10px 20px 0 0;
 }
 
+
+.product-item{
+    padding: 15px;
+    border: 1px solid rgb(90, 90, 90);
+    margin: 0 5px 5px 6px;
+    background: #FFF;
+    position: relative;
+    text-align: center;
+    width: 400px;
+}
+
+.delete{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgb(120, 120, 120);
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+.adjust{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgb(120, 120, 120);
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+
+.done{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: rgb(120, 120, 120);
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+
+.product-item:hover .delete{
+    display: block;
+}
+.product-item:hover .adjust{
+    display: block;
+}
+.product-item:hover .done{
+    display: block;
+}
+

@@ -57,9 +57,24 @@
             <br>
             <h2>CURRENT USERS</h2>
             <div class="container">
-                @foreach ($staff as $staff)
-                    {{ $staff->username }}
+
+                @foreach ($staffs as $staff)
+                    <ul class="product-item">
+                        <form action="adjust_form.php" method="post">
+                            <input class="adjust" type="submit" value="adjust">
+                            <input type="hidden" name="adjust" value="{$id}">
+                        </form>
+                        <li class="li-content">
+                        <li>{{ $staff->username }}</li>
+                        </li>
+                        <form action="../app/delete_manager.php" method="post">
+                            <input type="hidden" name="delete" value="{$id}">
+                            <input class="delete" type="submit" value="delete">
+                        </form>
+                    </ul>
+
                 @endforeach
+                    {{ $staffs->links() }}
             </div>
         </div>
     </div>
