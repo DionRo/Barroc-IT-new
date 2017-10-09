@@ -13,7 +13,7 @@ class financeController extends Controller
      */
     public function index()
     {
-        //
+        return view('finance/index');
     }
 
     /**
@@ -45,7 +45,7 @@ class financeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('finance/inactive');
     }
 
     /**

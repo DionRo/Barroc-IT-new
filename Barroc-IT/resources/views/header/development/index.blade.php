@@ -18,7 +18,7 @@
         <nav>
             <ul class="space-between">
                 <li><a href="/development">Home</a></li>
-                <li class="no-border"><a href="#/development/">Orders</a></li>
+                <li class="no-border"><a href="#">Orders</a></li>
             </ul>
         </nav>
         <form class="search" action="#">
