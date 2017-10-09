@@ -11,21 +11,15 @@
                         <td>Customer number</td>
                         <td>Status</td>
                     </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Status</td>
+                @foreach($customers as $customer)
+
+                    <tr>
+                        <td>{{$customer->firstName}} {{$customer->lastName}}</td>
+                        <td>{{$customer->customerNr}}</td>
+                        <td>{{$customer->status}}</td>
                     </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Status</td>
-                    </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Status</td>
-                    </tr>
+
+                @endforeach
                 </table>
                 <div class="sales-information flex">
                     <ul>

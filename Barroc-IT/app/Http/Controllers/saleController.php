@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\customers;
 use Illuminate\Http\Request;
+use Faker\Factory;
 
 class saleController extends Controller
 {
@@ -13,7 +15,10 @@ class saleController extends Controller
      */
     public function index()
     {
-        return view('sales/index');
+        $customers = \App\Customers::All();
+
+        return view('sales/index')
+            ->with('customers', $customers);
     }
 
     /**
@@ -23,7 +28,7 @@ class saleController extends Controller
      */
     public function create()
     {
-        return view('sales/add');
+        //
     }
 
     /**
