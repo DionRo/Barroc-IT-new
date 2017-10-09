@@ -16,6 +16,7 @@ route::get('/', function (){
 });
 
 Route::resource('admin' ,'adminpanelController');
-Route::resource('development' ,'developmentController');
+Route::resource('companies' ,'companiesController');
 Route::resource('finance' ,'financeController');
 Route::resource('sales' ,'saleController');
+Route::resource('orders', 'orderController');

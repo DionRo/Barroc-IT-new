@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class financeController extends Controller
+class orderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +13,7 @@ class financeController extends Controller
      */
     public function index()
     {
-
-
-        $customers = \App\Customer::all()->paginate(8);
-        $finance = \App\Finance::all();
-
-        return view('finance/index', ['finances' => $finance],['customers' => $customers]);
+        //
     }
 
     /**
@@ -50,7 +45,7 @@ class financeController extends Controller
      */
     public function show($id)
     {
-        return view('finance/inactive');
+        //
     }
 
     /**
