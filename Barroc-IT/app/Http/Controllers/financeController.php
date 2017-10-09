@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class financeController extends Controller
 {
@@ -15,7 +18,7 @@ class financeController extends Controller
     {
 
 
-        $customers = \App\Customer::all()->paginate(8);
+        $customers = \App\Customers::paginate(10);
         $finance = \App\Finance::all();
 
         return view('finance/index', ['finances' => $finance],['customers' => $customers]);

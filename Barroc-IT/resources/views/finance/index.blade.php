@@ -1,4 +1,4 @@
-@include('/header/finance/index');
+@include('/header/finance/index')
 
 <div class="main-content">
     <div class="positive">
@@ -7,35 +7,14 @@
             <div class="space-between">
                 <table class="sales-active" cellspacing="0" cellpadding="0">
                     <tr class="space-between title-table">
-                        <td>Name</td>
+                        <td class="table-sizer">Name</td>
                         <td>Customer number</td>
                         <td>Company number</td>
                         <td>Status</td>
                     </tr>
-
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Company number</td>
-                        <td>Status</td>
-                    </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Company number</td>
-                        <td>Status</td>
-                    </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Company number</td>
-                        <td>Status</td>
-                    </tr>
-
-
                     @foreach($customers as$customer)
-                        <tr class="space-between">
-                            <td>{{$customer->lastName}},{{$customer->firstName}}</td>
+                        <tr class="space-between showinfo">
+                            <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
                             <td>{{$customer->customerNr}}</td>
                             <td>{{$customer->companyNr}}</td>
                             <td>{{$customer->status}}</td>
@@ -63,6 +42,7 @@
                     </ul>
                 </div>
             </div>
+            {{$customers->Links()}}
         </div>
     </div>
     <div class="unknown">
