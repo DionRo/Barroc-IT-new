@@ -21,9 +21,9 @@ class adminpanelController extends Controller
     public function index()
     {
 
-        $staff = DB::table('tbl_staff')->paginate(100);
+        $staff = DB::table('tbl_staff')->paginate(10);
 
-        return view('admin/index', ['staff' => $staff] );
+        return view('admin/index', ['staffs' => $staff] );
     }
 
     /**
