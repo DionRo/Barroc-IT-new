@@ -28,7 +28,7 @@ class saleController extends Controller
      */
     public function create()
     {
-        //
+        return view('sales/add');
     }
 
     /**
@@ -39,7 +39,52 @@ class saleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'company' => 'required|string',
+            'email' => 'required|string',
+            'phoneNumber' => 'required',
+            'address' => 'required',
+            'zipCode' => 'required',
+            'description' => 'string',
+            'gender' => ['male', 'female'],
+            'in_array' => 'gender'
+        ]);
+
+        $customer = new \App\Customer();
+
+        $customer->firstName = $request->firstName;
+        $customer->lastName = $request->lastName;
+
+            $companyId = DB::table('company')
+                ->select('id')
+                ->where('companyName', '==', $request->company)
+                ->get();
+
+        if (isset($request->middleName)){
+            $this->validate($request, [
+                'middleName' => 'string'
+            ]);
+            $customer->middleName = $request->middleName;
+        }
+
+        $customer->address = $request->address;
+        $customer->zipCode = $request->zipCode;
+        $customer->email = $request->email;
+        $customer->cellPhone = $request->phoneNumber;
+
+        if ($request->gender == 'female'){
+            $customer->gender = 0;
+        }
+        if ($request->gender == 'male'){
+            $customer->gender = 1;
+        }
+
+        $customer->description = $request->description;
+        $customer->save();
+
+        return redirect('projects');
     }
 
     /**

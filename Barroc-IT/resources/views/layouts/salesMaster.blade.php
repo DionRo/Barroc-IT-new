@@ -22,10 +22,14 @@
                 <li class="no-border"><a href="/sales/{}/edit">Edit Customers</a></li>
             </ul>
         </nav>
-        <form class="search" action="">
-            <input class="search-button" type="button" name="search">
-            <input class="search-input" type="text" name="search" placeholder="Search...">
-        </form>
 
-    </div>
-</header>
+        @yield('content')
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/show-info.js"></script>
+        <footer class="align-center">
+            <p>All rights reserved</p>
+        </footer>
+
+</body>
+</html>
