@@ -66,7 +66,7 @@ h1{
     margin: 0 50px 0 0;
 }
 .search-button{
-    background: url('../img/search.png') no-repeat center;
+    background: url('../../img/search.png') no-repeat center;
     padding: 3px 10px;
     border: none;
     cursor: pointer;
@@ -114,63 +114,9 @@ h1{
     text-align: center;
 }
 
-.pagenation-item:hover .delete{
-    display: block;
-}
-.pagenation-item:hover .adjust{
-    display: block;
-}
-.pagenation-item:hover .done{
-    display: block;
-}
 .left{
     width: 465px;
 }
-
-.delete{
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 90%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background: rgb(120, 120, 120);
-    padding: 10px;
-    color: rgb(200, 200, 200);
-    display: none;
-    cursor: pointer;
-    border: none;
-}
-.adjust{
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background: rgb(120, 120, 120);
-    padding: 10px;
-    color: rgb(200, 200, 200);
-    display: none;
-    cursor: pointer;
-    border: none;
-}
-
-.done{
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background: rgb(120, 120, 120);
-    padding: 10px;
-    color: rgb(200, 200, 200);
-    display: none;
-    cursor: pointer;
-    border: none;
-}
-
 .main-content{
     display: -webkit-flex;
     display: -moz-flex;
@@ -181,14 +127,6 @@ h1{
     margin: 0 auto;
 }
 
-.pagenation a {
-    padding: 5px 10px;
-    background: #4CAF50;
-    border-radius: 50px;
-    color: white;
-    text-decoration: none;
-
-}
 .divide-light{
     background: rgb(219, 218, 212);
     background-size: cover;
@@ -275,28 +213,26 @@ table{
     border: none;
 }
 
-.done{
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background: rgb(120, 120, 120);
-    padding: 10px;
-    color: rgb(200, 200, 200);
-    display: none;
-    cursor: pointer;
-    border: none;
-}
-
 .product-item:hover .delete{
     display: block;
 }
 .product-item:hover .adjust{
     display: block;
 }
-.product-item:hover .done{
-    display: block;
+
+.pagination{
+    display: flex;
+    justify-content: center;
 }
 
+.pagination li {
+    padding: 5px 10px;
+    margin-right: 3px;
+    background: #4CAF50;
+    border-radius: 50px;
+    color: white;
+}
+
+.pagination li a {
+    color: black;
+}

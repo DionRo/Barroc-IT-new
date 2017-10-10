@@ -65,7 +65,7 @@
                             <input type="hidden" name="adjust" value="{$id}">
                         </form>
                         <li class="li-content">
-                        <li>{{ $staff->username }}</li>
+                        <li>{{ $staff->firstName}} {{ $staff->middleName}} {{ $staff->lastName}}</li>
                         </li>
                         <form action="../app/delete_manager.php" method="post">
                             <input type="hidden" name="delete" value="{$id}">
