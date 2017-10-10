@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class developmentController extends Controller
 {
@@ -13,7 +16,10 @@ class developmentController extends Controller
      */
     public function index()
     {
-        return view('development/show');
+        $customers = \App\Customers::paginate(10);
+        $orders = \App\Orders::all();
+
+        return view('development/show', ['orders' => $orders], ['customers' => $customers]);
     }
 
     /**
@@ -56,7 +62,7 @@ class developmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('development/edit');
     }
 
     /**
