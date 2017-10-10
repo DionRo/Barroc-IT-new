@@ -20,3 +20,7 @@ Route::resource('companies' ,'companiesController');
 Route::resource('finance' ,'financeController');
 Route::resource('sales' ,'saleController');
 Route::resource('orders', 'orderController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
