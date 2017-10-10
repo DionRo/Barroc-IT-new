@@ -1,5 +1,13 @@
-@include('/header/sales/index')
+@extends('layouts/salesMaster')
 
+@section('content')
+        <form class="search" action="">
+            <input class="search-button" type="button" name="search">
+            <input class="search-input" type="text" name="search" placeholder="Search...">
+        </form>
+
+    </div>
+</header>
 <div class="main-content">
     <div class="active">
         <div class="container">
@@ -98,5 +106,4 @@
         </div>
     </div>
 </div>
-
-@include('/footer/index')
+@endsection

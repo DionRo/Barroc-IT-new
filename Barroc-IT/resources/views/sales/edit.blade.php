@@ -1,13 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sales edit</title>
-</head>
-<body>
-<p>Hallo ik ben de Sales edit</p>
-</body>
-</html>
+@extends('layouts/salesMaster')
+
+@section('content')
+</div>
+</header>
+<div class="main-content">
+    <h2>Edit Customers</h2>
+    <form class="search" action="">
+        <input class="search-button" type="button" name="search">
+        <input class="search-input" type="text" name="search" placeholder="Search...">
+    </form>
+</div>
+@endsection
