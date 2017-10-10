@@ -13,9 +13,15 @@
                         <td>Status</td>
                     </tr>
                     @foreach($customers as$customer)
-                        <tr class="space-between showinfo">
+                        <tr class="space-between showinfo item-js"
+                            data-first-name="{{$customer->firstName}}"
+                            data-last-name="{{$customer->lastName}}"
+                            data-customer-nr="{{$customer->id}}"
+                            data-company-nr="{{$customer->companyNr}}"
+                            data-status="{{$customer->status}}"
+                        >
                             <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
-                            <td>{{$customer->customerNr}}</td>
+                            <td>{{$customer->id}}</td>
                             <td>{{$customer->companyNr}}</td>
                             <td>{{$customer->status}}</td>
                         </tr>
@@ -32,10 +38,10 @@
                         <li>Credit Ceiling:</li>
                     </ul>
                     <ul>
-                        <li>First Name</li>
-                        <li>Last Name</li>
-                        <li>Customer Number</li>
-                        <li>Description</li>
+                        <li id="firstN">.</li>
+                        <li id="last">.</li>
+                        <li id="customer">.</li>
+                        <li id="status">.</li>
                         <li>Positive</li>
                         <li>€250,-</li>
                         <li>€500,-</li>
