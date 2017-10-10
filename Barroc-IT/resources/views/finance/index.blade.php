@@ -12,16 +12,26 @@
                         <td>Company number</td>
                         <td>Status</td>
                     </tr>
-                    @foreach($customers as$customer)
-                        <tr class="space-between showinfo">
+                    @foreach($customers as $customer)
+                        <tr class="space-between showinfo item-js"
+                            data-first-name="{{$customer->firstName}}"
+                            data-last-name="{{$customer->lastName}}"
+                            data-customer-nr="{{$customer->id}}"
+                            data-company-nr="{{$customer->companyNr}}"
+                            data-status="{{$customer->status}}"
+                            data-bkr="{{$customer->company->BKR}}"
+                            data-credit="{{$customer->company->credit}}"
+                            data-credit-ceiling="{{$customer->company->creditCeiling}}"
+
+                        >
                             <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
-                            <td>{{$customer->customerNr}}</td>
+                            <td>{{$customer->id}}</td>
                             <td>{{$customer->companyNr}}</td>
                             <td>{{$customer->status}}</td>
                         </tr>
                     @endforeach
                 </table>
-                <div class="sales-information flex">
+                <div class="sales-information flex" id="pop-up">
                     <ul>
                         <li>First Name:</li>
                         <li>Last Name:</li>
@@ -32,13 +42,13 @@
                         <li>Credit Ceiling:</li>
                     </ul>
                     <ul>
-                        <li>First Name</li>
-                        <li>Last Name</li>
-                        <li>Customer Number</li>
-                        <li>Description</li>
-                        <li>Positive</li>
-                        <li>€250,-</li>
-                        <li>€500,-</li>
+                        <li id="firstN"></li>
+                        <li id="last"></li>
+                        <li id="customer"></li>
+                        <li id="status"></li>
+                        <li id="bkr"></li>
+                        <li id="credit"></li>
+                        <li id="creditceiling"></li>
                     </ul>
                 </div>
             </div>
