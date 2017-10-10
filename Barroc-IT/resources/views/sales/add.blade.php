@@ -1,4 +1,4 @@
-@include('/header/sales/index')
+@include('/header/sales/index)
 
 <div class="add-edit-customers main-content">
     <div class="container space-between">

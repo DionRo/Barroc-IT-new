@@ -13,6 +13,7 @@
                         <td>Status</td>
 
                     </tr>
+
                     <tr class="space-between">
                         <td>
                             <a class="showinfo">Name</a>
@@ -20,16 +21,7 @@
                         <td>Customer number</td>
                         <td>Status</td>
                     </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Status</td>
-                    </tr>
-                    <tr class="space-between">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Status</td>
-                    </tr>
+                    
                 </table>
                 <div class="sales-information flex">
                     <ul>
