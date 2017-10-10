@@ -25,8 +25,26 @@ class developmentController extends Controller
             $orders = \App\Orders::all();
 
             return view('development/show', ['orders' => $orders], ['customers' => $customers]);
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
+
         }
     }
 
@@ -41,8 +59,25 @@ class developmentController extends Controller
         if (Auth::user()->adminLevel == $development)
         {
             return 'You are on the create page from the @ development section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -58,8 +93,25 @@ class developmentController extends Controller
         if (Auth::user()->adminLevel == $development)
         {
             return 'You are on the store page from the @ development section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -75,8 +127,25 @@ class developmentController extends Controller
         if (Auth::user()->adminLevel == $development)
         {
             return 'You are on the show page from the @ development section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -92,10 +161,26 @@ class developmentController extends Controller
         if (Auth::user()->adminLevel == $development)
         {
             return view('development/edit');
-        }else{
-            return view('auth/login');
         }
+        else
+        {
 
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
+        }
     }
 
     /**
@@ -111,8 +196,25 @@ class developmentController extends Controller
         if (Auth::user()->adminLevel == $development)
         {
             return 'You are on the update page from the @ development section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -128,8 +230,24 @@ class developmentController extends Controller
         if (Auth::user()->adminLevel == $development)
         {
             return 'You are on the destroy page from the @ development section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 }

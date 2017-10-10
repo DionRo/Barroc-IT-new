@@ -25,8 +25,25 @@ class saleController extends Controller
             return view('sales/index')
                 ->with('customers', $customers);
 
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -42,8 +59,25 @@ class saleController extends Controller
         if (Auth::user()->adminLevel == $sales)
         {
             return view('sales/add');
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -55,9 +89,8 @@ class saleController extends Controller
      */
     public function store(Request $request)
     {
-        $sales = 2 ;
-        if (Auth::user()->adminLevel == $sales)
-        {
+        $sales = 2;
+        if (Auth::user()->adminLevel == $sales) {
             $this->validate($request, [
                 'firstName' => 'required|string',
                 'lastName' => 'required|string',
@@ -81,7 +114,7 @@ class saleController extends Controller
                 ->where('companyName', '==', $request->company)
                 ->get();
 
-            if (isset($request->middleName)){
+            if (isset($request->middleName)) {
                 $this->validate($request, [
                     'middleName' => 'string'
                 ]);
@@ -93,10 +126,10 @@ class saleController extends Controller
             $customer->email = $request->email;
             $customer->cellPhone = $request->phoneNumber;
 
-            if ($request->gender == 'female'){
+            if ($request->gender == 'female') {
                 $customer->gender = 0;
             }
-            if ($request->gender == 'male'){
+            if ($request->gender == 'male') {
                 $customer->gender = 1;
             }
 
@@ -107,10 +140,22 @@ class saleController extends Controller
         }
         else
         {
-            return view('auth/login');
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
-
-
     }
 
     /**
@@ -125,8 +170,24 @@ class saleController extends Controller
         if (Auth::user()->adminLevel == $sales)
         {
             return 'You are on the show page from the @ sales section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -142,10 +203,27 @@ class saleController extends Controller
         if (Auth::user()->adminLevel == $sales)
         {
             return view('sales/edit');
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -160,8 +238,24 @@ class saleController extends Controller
         if (Auth::user()->adminLevel == $sales)
         {
             return 'You are on the update page from the @ sales section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 
@@ -177,8 +271,25 @@ class saleController extends Controller
         if (Auth::user()->adminLevel == $sales)
         {
             return 'You are on the destroy page from the @ sales section';
-        }else{
-            return view('auth/login');
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
         }
     }
 }
+
