@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-
+@extends('layout')
+@section('content')
 <header>
     <div class="title space-between align-center">
         <h1>Development</h1>
@@ -27,3 +20,4 @@
         </form>
     </div>
 </header>
+@stop
