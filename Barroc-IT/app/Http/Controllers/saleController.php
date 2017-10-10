@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\customers;
 use Illuminate\Http\Request;
 use Faker\Factory;
+use Illuminate\Support\Facades\Auth;
 
 class saleController extends Controller
 {
@@ -15,10 +16,18 @@ class saleController extends Controller
      */
     public function index()
     {
-        $customers = \App\Customers::All();
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
 
-        return view('sales/index')
-            ->with('customers', $customers);
+            $customers = \App\Customers::All();
+
+            return view('sales/index')
+                ->with('customers', $customers);
+
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -28,7 +37,14 @@ class saleController extends Controller
      */
     public function create()
     {
-        return view('sales/add');
+
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            return view('sales/add');
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -39,52 +55,62 @@ class saleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
-            'company' => 'required|string',
-            'email' => 'required|string',
-            'phoneNumber' => 'required',
-            'address' => 'required',
-            'zipCode' => 'required',
-            'description' => 'string',
-            'gender' => ['male', 'female'],
-            'in_array' => 'gender'
-        ]);
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            $this->validate($request, [
+                'firstName' => 'required|string',
+                'lastName' => 'required|string',
+                'company' => 'required|string',
+                'email' => 'required|string',
+                'phoneNumber' => 'required',
+                'address' => 'required',
+                'zipCode' => 'required',
+                'description' => 'string',
+                'gender' => ['male', 'female'],
+                'in_array' => 'gender'
+            ]);
 
-        $customer = new \App\Customer();
+            $customer = new \App\Customer();
 
-        $customer->firstName = $request->firstName;
-        $customer->lastName = $request->lastName;
+            $customer->firstName = $request->firstName;
+            $customer->lastName = $request->lastName;
 
             $companyId = DB::table('company')
                 ->select('id')
                 ->where('companyName', '==', $request->company)
                 ->get();
 
-        if (isset($request->middleName)){
-            $this->validate($request, [
-                'middleName' => 'string'
-            ]);
-            $customer->middleName = $request->middleName;
+            if (isset($request->middleName)){
+                $this->validate($request, [
+                    'middleName' => 'string'
+                ]);
+                $customer->middleName = $request->middleName;
+            }
+
+            $customer->address = $request->address;
+            $customer->zipCode = $request->zipCode;
+            $customer->email = $request->email;
+            $customer->cellPhone = $request->phoneNumber;
+
+            if ($request->gender == 'female'){
+                $customer->gender = 0;
+            }
+            if ($request->gender == 'male'){
+                $customer->gender = 1;
+            }
+
+            $customer->description = $request->description;
+            $customer->save();
+
+            return redirect('projects');
+        }
+        else
+        {
+            return view('auth/login');
         }
 
-        $customer->address = $request->address;
-        $customer->zipCode = $request->zipCode;
-        $customer->email = $request->email;
-        $customer->cellPhone = $request->phoneNumber;
 
-        if ($request->gender == 'female'){
-            $customer->gender = 0;
-        }
-        if ($request->gender == 'male'){
-            $customer->gender = 1;
-        }
-
-        $customer->description = $request->description;
-        $customer->save();
-
-        return redirect('projects');
     }
 
     /**
@@ -95,7 +121,13 @@ class saleController extends Controller
      */
     public function show($id)
     {
-        //
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            return 'You are on the show page from the @ sales section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -106,7 +138,13 @@ class saleController extends Controller
      */
     public function edit($id)
     {
-        return view('sales/edit');
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            return view('sales/edit');
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -118,7 +156,13 @@ class saleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            return 'You are on the update page from the @ sales section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -129,6 +173,12 @@ class saleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            return 'You are on the destroy page from the @ sales section';
+        }else{
+            return view('auth/login');
+        }
     }
 }

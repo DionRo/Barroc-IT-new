@@ -11,8 +11,9 @@
 |
 */
 
-route::get('/', function (){
-    return view('welcome');
+Route::get('/', function()
+{
+    return view('auth/login');
 });
 
 Route::resource('admin' ,'adminpanelController');
@@ -22,4 +23,4 @@ Route::resource('sales' ,'saleController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');

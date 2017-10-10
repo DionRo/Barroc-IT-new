@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Faker\Factory;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -20,10 +21,15 @@ class adminpanelController extends Controller
      */
     public function index()
     {
-
-        $staff = DB::table('tbl_staff')->paginate(10);
-
-        return view('admin/index', ['staffs' => $staff] );
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
+        {
+            $staff = DB::table('users')->paginate(10);
+            return view('admin/index', ['staffs' => $staff] );
+        }else
+        {
+            return view('auth/login');
+        }
     }
 
     /**
@@ -33,21 +39,12 @@ class adminpanelController extends Controller
      */
     public function create()
     {
-        $faker = Factory::create();
-
-        for( $x = 0 ; $x < 100;$x++)
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
         {
-            $admin = new Admin();
-            $admin->username = $faker->userName;
-            $admin->password = $faker->password;
-            $admin->email = $faker->email;
-            $admin->adminLevel = 0;
-            $admin->firstName = $faker->firstName;
-            $admin->lastName = $faker->lastName;
-            $admin->adress = $faker->streetAddress;
-            $admin->zipcode = $faker->postcode;
-            $admin->country = $faker->country;
-            $admin->save();
+            return 'You are on the create page from the @ admin section';
+        }else{
+            return view('auth/login');
         }
     }
 
@@ -59,7 +56,13 @@ class adminpanelController extends Controller
      */
     public function store(Request $request)
     {
-
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
+        {
+            return 'You are on the store page from the @ admin section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -70,7 +73,13 @@ class adminpanelController extends Controller
      */
     public function show($id)
     {
-        //
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
+        {
+            return 'You are on the show page from the @ admin section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -81,7 +90,13 @@ class adminpanelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
+        {
+            return 'You are on the edit page from the @ admin section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -93,7 +108,13 @@ class adminpanelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
+        {
+            return 'You are on the update page from the @ admin section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -104,6 +125,12 @@ class adminpanelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin = 0 ;
+        if (Auth::user()->adminLevel == $admin)
+        {
+            return 'You are on the destroy page from the @ admin section';
+        }else{
+            return view('auth/login');
+        }
     }
 }

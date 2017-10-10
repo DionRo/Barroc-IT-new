@@ -58,25 +58,11 @@
                             </div>
                         </div>
 
-                        {{--<div class="form-group{{ $errors->has('middleName') ? ' has-error' : '' }}">--}}
-                            {{--<label for="middleName" class="col-md-4 control-label">Middlename</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="name" type="text" class="form-control" name="middleName"  autofocus>--}}
-
-                                {{--@if ($errors->has('middleName'))--}}
-                                    {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('middleName') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
                         <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
                             <label for="lastName" class="col-md-4 control-label">Lastname</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required autofocus>
+                                <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required autofocus>
 
                                 @if ($errors->has('lastName'))
                                     <span class="help-block">
@@ -105,7 +91,7 @@
                             <label for="adress" class="col-md-4 control-label">Adress</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autofocus>
+                                <input id="adress" type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autofocus>
 
                                 @if ($errors->has('adress'))
                                     <span class="help-block">
@@ -119,7 +105,7 @@
                             <label for="zipcode" class="col-md-4 control-label">Zipcode</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
+                                <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
 
                                 @if ($errors->has('zipcode'))
                                     <span class="help-block">
@@ -133,7 +119,7 @@
                             <label for="country" class="col-md-4 control-label">Country</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}" required autofocus>
+                                <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" required autofocus>
 
                                 @if ($errors->has('country'))
                                     <span class="help-block">
@@ -142,6 +128,7 @@
                                 @endif
                             </div>
                         </div>
+
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Faker\Factory;
 use App\Finance;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -22,13 +23,19 @@ class financeController extends Controller
      */
     public function index()
     {
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
+        {
+            $customers = \App\Customers::whereHas('company', function ($query)
+            {$query->where('BKR', '=', 0);
+            })->paginate(10);
 
+            $finance = \App\Finance::all();
+            return view('finance/index', ['finances' => $finance], ['customers' => $customers]);
+        }else{
+            return view('auth/login');
+        }
 
-        $customers = \App\Customers::whereHas('company', function ($query) {
-            $query->where('BKR', '=', 0);
-        })->paginate(10);
-        $finance = \App\Finance::all();
-        return view('finance/index', ['finances' => $finance],['customers' => $customers]);
     }
 
     /**
@@ -39,16 +46,12 @@ class financeController extends Controller
     public function create()
     {
 
-        $faker = Factory::create();
-
-        for( $x = 0 ; $x < 100;$x++)
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
         {
-            $admin = new Finance();
-            $admin->companyNr = $x;
-            $admin->credit = $faker->numberBetween(100,500);
-            $admin->creditCeiling  = $faker->numberBetween(125, 600);
-            $admin->BKR = $faker->numberBetween(0,2);
-            $admin->save();
+            return 'You are on the create page from the @ finance section';
+        }else{
+            return view('auth/login');
         }
     }
 
@@ -60,7 +63,13 @@ class financeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
+        {
+            return 'You are on the store page from the @ finance section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -71,7 +80,14 @@ class financeController extends Controller
      */
     public function show($id)
     {
-        return view('finance/inactive');
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
+        {
+            return view('finance/inactive');
+        }else{
+            return view('auth/login');
+        }
+
     }
 
     /**
@@ -82,7 +98,13 @@ class financeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
+        {
+            return 'You are on the edit page from the @ finance section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -94,7 +116,13 @@ class financeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
+        {
+            return 'You are on the update page from the @ finance section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -105,6 +133,12 @@ class financeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $finance = 1 ;
+        if (Auth::user()->adminLevel == $finance)
+        {
+            return 'You are on the destroy page from the @ finance section';
+        }else{
+            return view('auth/login');
+        }
     }
 }

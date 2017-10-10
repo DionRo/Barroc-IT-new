@@ -10,8 +10,14 @@
 <header>
     <div class="title space-between align-center">
         <h1>Admin</h1>
-        <form action="#">
-            <input class="logout" type="button" name="logout" value="logout">
+        <a class="logout" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+           document.getElementById('logout-form').submit();">
+            Logout
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
         </form>
     </div>
     <div class="navigation space-between align-center">

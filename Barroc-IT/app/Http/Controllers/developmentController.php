@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class developmentController extends Controller
 {
@@ -16,10 +17,17 @@ class developmentController extends Controller
      */
     public function index()
     {
-        $customers = \App\Customers::paginate(10);
-        $orders = \App\Orders::all();
 
-        return view('development/show', ['orders' => $orders], ['customers' => $customers]);
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            $customers = \App\Customers::paginate(10);
+            $orders = \App\Orders::all();
+
+            return view('development/show', ['orders' => $orders], ['customers' => $customers]);
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -29,7 +37,13 @@ class developmentController extends Controller
      */
     public function create()
     {
-        //
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            return 'You are on the create page from the @ development section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -40,7 +54,13 @@ class developmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            return 'You are on the store page from the @ development section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -51,7 +71,13 @@ class developmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            return 'You are on the show page from the @ development section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -62,7 +88,14 @@ class developmentController extends Controller
      */
     public function edit($id)
     {
-        return view('development/edit');
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            return view('development/edit');
+        }else{
+            return view('auth/login');
+        }
+
     }
 
     /**
@@ -74,7 +107,13 @@ class developmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            return 'You are on the update page from the @ development section';
+        }else{
+            return view('auth/login');
+        }
     }
 
     /**
@@ -85,6 +124,12 @@ class developmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            return 'You are on the destroy page from the @ development section';
+        }else{
+            return view('auth/login');
+        }
     }
 }
