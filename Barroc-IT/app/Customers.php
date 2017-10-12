@@ -12,4 +12,8 @@ class customers extends Model
     {
     return $this->hasOne('App\Finance', 'companyNr');
     }
+    public function orders()
+    {
+        return $this->hasOne('App\Orders', 'orderNr');
+    }
 }

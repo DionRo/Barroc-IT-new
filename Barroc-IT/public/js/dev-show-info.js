@@ -6,6 +6,13 @@ $('.showinfo').click(function(){
         done = true;
     }
 });
+$('.showholdinfo').click(function(){
+    if (!done)
+    {
+        $('.sales-holdinformation').toggleClass('sales-holdinformation-vis');
+        done = true;
+    }
+});
 
 var items = $(".item-js");
 
@@ -31,22 +38,15 @@ function fill(firstN, last, customer, status , bkr, credit , creditCeiling) {
         "                        <li>First Name:</li>\n" +
         "                        <li>Last Name:</li>\n" +
         "                        <li>Customer Number:</li>\n" +
-        "                        <li>Description:</li>\n" +
-        "                        <li>BRK:</li>\n" +
-        "                        <li>Credit:</li>\n" +
-        "                        <li>Credit Ceiling:</li>\n" +
+        "                        <li>Status:</li>\n" +
         "                    </ul>\n" +
         "                    <ul>\n" +
         "                        <li id=\"firstN\">"+ firstN +"</li>\n" +
         "                        <li id=\"last\">" + last +"</li>\n" +
         "                        <li id=\"customer\">"+ customer +"</li>\n" +
         "                        <li id=\"status\">" + status + "</li>\n" +
-        "                         <li id=\"bkr\">" + bkr + "</li>\n" +
-        "                        <li id=\"credit\">" + credit +"</li>\n" +
-        "                        <li id=\"creditceiling\">" + creditCeiling + "</li>\n" +
         "                    </ul>\n" ;
     console.log(text);
     console.log(blad);
     blad.innerHTML = text;
 }
-

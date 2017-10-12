@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Faker\Factory;
+use App\Orders;
+use App\Company;
+use App\customers;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class developmentController extends Controller
@@ -26,8 +31,10 @@ class developmentController extends Controller
         $development = 3 ;
         if (Auth::user()->adminLevel == $development)
         {
-            $customers = \App\Customers::paginate(10);
-            $orders = \App\Orders::all();
+            $customers = \App\Customers::whereHas('orders', function ($query)
+            {$query->where('products', '!=', NULL);
+            })->paginate(10);
+            $orders = Orders::all();
 
             return view('development/show', ['orders' => $orders], ['customers' => $customers]);
         }

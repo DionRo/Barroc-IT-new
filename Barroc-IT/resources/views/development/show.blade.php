@@ -16,33 +16,38 @@
                         </tr>
                         @foreach($customers as $customer)
                             @if($customer->status == 'Active')
-                                <tr class="space-between showinfo devitem-js"
+                                <tr class="space-between showinfo item-js"
                                     data-first-name="{{$customer->firstName}}"
                                     data-last-name="{{$customer->lastName}}"
                                     data-customer-nr="{{$customer->id}}"
                                     data-company-nr="{{$customer->companyNr}}"
                                     data-status="{{$customer->status}}"
+                                    data-order-nr="{{$orders->orderNr}}"
+                                    data-product="{{$orders->product}}"
                                 >
                                     <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
-                                    <td>{{$customer->id}}</td>
                                     <td>{{$customer->companyNr}}</td>
                                     <td>{{$customer->status}}</td>
                                 </tr>
                             @endif
                         @endforeach
                     </table>
-                    <div class="sales-information flex" id="devpop-up">
+                    <div class="sales-information flex" id="pop-up">
                         <ul>
                             <li>First Name:</li>
                             <li>Last Name:</li>
-                            <li>Customer Number:</li>
+                            <li>Customer Nr:</li>
                             <li>Status:</li>
+                            <li>Order Nr:</li>
+                            <li>Product:</li>
                         </ul>
                         <ul>
                             <li>First Name</li>
                             <li>Last Name</li>
                             <li>Customer Number</li>
-                            <li>Description</li>
+                            <li>Status</li>
+                            <li>Order Number</li>
+                            <li>Product</li>
                         </ul>
                     </div>
                 </div>
@@ -61,12 +66,14 @@
                         </tr>
                         @foreach($customers as $customer)
                             @if($customer->status == 'On Hold')
-                                <tr class="space-between showholdinfo devitem-js"
+                                <tr class="space-between showholdinfo item-js"
                                     data-first-name="{{$customer->firstName}}"
                                     data-last-name="{{$customer->lastName}}"
                                     data-customer-nr="{{$customer->id}}"
                                     data-company-nr="{{$customer->companyNr}}"
                                     data-status="{{$customer->status}}"
+                                    data-order-nr="{{$customer->orderNr}}"
+                                    data-product="{{$customer->product}}"
                                 >
                                     <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
                                     <td>{{$customer->companyNr}}</td>
@@ -75,18 +82,22 @@
                             @endif
                         @endforeach
                     </table>
-                    <div class="sales-holdinformation flex" id="devpop-up">
+                    <div class="sales-holdinformation flex" id="pop-up">
                         <ul>
                             <li>First Name:</li>
                             <li>Last Name:</li>
-                            <li>Customer Number:</li>
-                            <li>Description:</li>
+                            <li>Customer Nr:</li>
+                            <li>Status:</li>
+                            <li>Order Nr:</li>
+                            <li>Product:</li>
                         </ul>
                         <ul>
                             <li>First Name</li>
                             <li>Last Name</li>
                             <li>Customer Number</li>
-                            <li>Description</li>
+                            <li>Status</li>
+                            <li>Order Number</li>
+                            <li>Product</li>
                         </ul>
                     </div>
                 </div>
