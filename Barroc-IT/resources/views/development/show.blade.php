@@ -16,32 +16,33 @@
                         </tr>
                         @foreach($customers as $customer)
                             @if($customer->status == 'Active')
-                                <tr class="space-between showinfo">
+                                <tr class="space-between showinfo devitem-js"
+                                    data-first-name="{{$customer->firstName}}"
+                                    data-last-name="{{$customer->lastName}}"
+                                    data-customer-nr="{{$customer->id}}"
+                                    data-company-nr="{{$customer->companyNr}}"
+                                    data-status="{{$customer->status}}"
+                                >
                                     <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
+                                    <td>{{$customer->id}}</td>
                                     <td>{{$customer->companyNr}}</td>
                                     <td>{{$customer->status}}</td>
                                 </tr>
                             @endif
                         @endforeach
                     </table>
-                    <div class="sales-information flex">
+                    <div class="sales-information flex" id="devpop-up">
                         <ul>
                             <li>First Name:</li>
                             <li>Last Name:</li>
                             <li>Customer Number:</li>
-                            <li>Description:</li>
-                            <li>BRK:</li>
-                            <li>Credit:</li>
-                            <li>Credit Ceiling:</li>
+                            <li>Status:</li>
                         </ul>
                         <ul>
                             <li>First Name</li>
                             <li>Last Name</li>
                             <li>Customer Number</li>
                             <li>Description</li>
-                            <li>Positive</li>
-                            <li>€250,-</li>
-                            <li>€500,-</li>
                         </ul>
                     </div>
                 </div>
@@ -60,7 +61,13 @@
                         </tr>
                         @foreach($customers as $customer)
                             @if($customer->status == 'On Hold')
-                                <tr class="space-between showinfo">
+                                <tr class="space-between showholdinfo devitem-js"
+                                    data-first-name="{{$customer->firstName}}"
+                                    data-last-name="{{$customer->lastName}}"
+                                    data-customer-nr="{{$customer->id}}"
+                                    data-company-nr="{{$customer->companyNr}}"
+                                    data-status="{{$customer->status}}"
+                                >
                                     <td class="table-sizer">{{$customer->lastName}}, {{$customer->firstName}}</td>
                                     <td>{{$customer->companyNr}}</td>
                                     <td>{{$customer->status}}</td>
@@ -68,28 +75,23 @@
                             @endif
                         @endforeach
                     </table>
-                    <div class="sales-information flex">
+                    <div class="sales-holdinformation flex" id="devpop-up">
                         <ul>
                             <li>First Name:</li>
                             <li>Last Name:</li>
                             <li>Customer Number:</li>
                             <li>Description:</li>
-                            <li>BRK:</li>
-                            <li>Credit:</li>
-                            <li>Credit Ceiling:</li>
                         </ul>
                         <ul>
                             <li>First Name</li>
                             <li>Last Name</li>
                             <li>Customer Number</li>
                             <li>Description</li>
-                            <li>Positive</li>
-                            <li>€250,-</li>
-                            <li>€500,-</li>
                         </ul>
                     </div>
                 </div>
-                {{$customers->Links()}}
+            </div>
+            {{$customers->Links()}}
         </div>
     </div>
 @endsection
