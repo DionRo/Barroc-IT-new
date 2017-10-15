@@ -30,10 +30,12 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="department" value="{{ old('department') }}">
-                                    <option value="0">Admin</option>
-                                    <option value="1">Sales</option>
-                                    <option value="2">Finance</option>
-                                    <option value="3">Development</option>
+                                    {{$adminLevels = ['Admin', 'Finance', 'Sales', 'Development']}}
+                                    @foreach($adminLevels as $adminLevel)
+                                        {{$i = 0}}
+                                        <option value="{{$i}}">{{$adminLevel}}</option>
+                                        {{$i++}}
+                                    @endforeach
                                 </select>
 
                                 @if ($errors->has('department'))
