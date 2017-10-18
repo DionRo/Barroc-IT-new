@@ -16,4 +16,8 @@ class customers extends Model
     {
         return $this->hasOne('App\Orders', 'orderNr');
     }
+    public function store()
+    {
+        return $this->hasOne('App\Company', 'companyNr');
+    }
 }

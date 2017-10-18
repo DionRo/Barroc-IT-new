@@ -47,11 +47,6 @@ function fill(firstN, last, customer, status , bkr, credit , creditCeiling) {
         "                    </ul>\n";
     blad.innerHTML = text;
 }
-<<<<<<< Updated upstream
-
-=======
-
-
 var done2 = false;
 $('.showinfo2').click(function(){
     if (!done2)
@@ -276,4 +271,3 @@ function fill5(firstN, lastN, customer, status ,phone , email , company, country
     blad5.innerHTML = text;
 }
 
->>>>>>> Stashed changes
