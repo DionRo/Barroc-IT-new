@@ -19,7 +19,7 @@ Route::get('/', function()
 Route::resource('admin' ,'adminpanelController');
 Route::resource('development' ,'developmentController');
 Route::resource('finance' ,'financeController');
-Route::resource('sales' ,'saleController');
+Route::resource('sales' ,'salesController');
 
 Auth::routes();
 

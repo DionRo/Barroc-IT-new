@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Faker\Factory;
 use App\Finance;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 
 
@@ -35,8 +37,20 @@ class financeController extends Controller
             {$query->where('BKR', '=', 0);
             })->paginate(10);
 
+            $customersU = \App\Customers::whereHas('company', function ($query)
+            {$query->where('BKR', '=', 1);
+            })->paginate(10);
+
+            $customersN = \App\Customers::whereHas('company', function ($query)
+            {$query->where('BKR', '=', 2);
+            })->paginate(10);
+
             $finance = \App\Finance::all();
-            return view('finance/index', ['finances' => $finance], ['customers' => $customers]);
+            return view('finance/index')->with('finances', $finance)
+                ->with('customers', $customers)
+                ->with('customersU' , $customersU)
+                ->with('customersN', $customersN);
+
         }
         else
         {
@@ -65,7 +79,6 @@ class financeController extends Controller
      */
     public function create()
     {
-
         $finance = 1;
         if (Auth::user()->adminLevel == $finance) {
             return 'You are on the create page from the @ finance section';
@@ -134,7 +147,6 @@ class financeController extends Controller
         $finance = 1 ;
         if (Auth::user()->adminLevel == $finance)
         {
-            return view('finance/inactive');
         }
         else
         {
@@ -167,7 +179,12 @@ class financeController extends Controller
         $finance = 1 ;
         if (Auth::user()->adminLevel == $finance)
         {
-            return 'You are on the edit page from the @ finance section';
+            $customer = \App\Customers::find($id);
+
+            $customers = \App\Customers::whereHas('company');
+            return view('finance/adjust')
+                ->with('customer' , $customer)
+                ->with('test' , $customers);
         }
         else
         {
@@ -201,7 +218,24 @@ class financeController extends Controller
         $finance = 1 ;
         if (Auth::user()->adminLevel == $finance)
         {
-            return 'You are on the update page from the @ finance section';
+            $customer = \App\Customers::find($id);
+            $financeId = DB::table('tbl_finance')
+            ->select('id')
+            ->where([
+                ['companyNr', '=', $customer->companyNr]])
+            ->first()
+            ->id;
+
+            $update = \App\Finance::find($financeId);
+
+            $update->BKR = $request->BKR;
+            $update->credit = $request->credit;
+            $update->creditCeiling = $request->ceiling;
+
+            $update->save();
+
+
+            return redirect('finance')->with('status', 'Customers Finance Has Been Updated');
         }
         else
         {

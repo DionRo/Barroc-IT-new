@@ -138,20 +138,93 @@ table{
 .sales-active{
     width: 60%;
 }
-.sales-information{
+.sales-information-4{
     background: rgb(220, 220, 220);
     border-top: 1px solid rgb(120, 120, 120);
     border-bottom: 1px solid rgb(120, 120, 120);
     width: 35%;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    max-height: 400px;
 }
-.sales-information ul{
+.sales-information-4 ul{
     padding: 15px;
 }
-.sales-information li{
+.sales-information-4 li {
     font-size: 1.5em;
     padding: 10px 20px 0 0;
 }
+
+.sales-information-4{
+    background: rgb(220, 220, 220);
+    border-top: 1px solid rgb(120, 120, 120);
+    border-bottom: 1px solid rgb(120, 120, 120);
+    width: 35%;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    visibility: hidden;
+}
+
+.sales-information-5{
+    background: rgb(220, 220, 220);
+    border-top: 1px solid rgb(120, 120, 120);
+    border-bottom: 1px solid rgb(120, 120, 120);
+    width: 35%;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    max-height: 400px;
+}
+.sales-information-5 ul{
+    padding: 15px;
+}
+.sales-information-5 li {
+    font-size: 1.5em;
+    padding: 10px 20px 0 0;
+}
+
+.sales-information-5{
+    background: rgb(220, 220, 220);
+    border-top: 1px solid rgb(120, 120, 120);
+    border-bottom: 1px solid rgb(120, 120, 120);
+    width: 35%;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    visibility: hidden;
+}
+
+.sales-information-vis{
+    background: rgb(220, 220, 220);
+    border-top: 1px solid rgb(120, 120, 120);
+    border-bottom: 1px solid rgb(120, 120, 120);
+    width: 35%;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    visibility: visible;
+}
+
+.table-sizer {
+    width: 150px;
+}
+.table-sizer2 {
+    width: 125px;
+}
+
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    position: relative;
+    right: 217px;
+}
+
+.pagination li {
+    padding: 5px 10px;
+    margin-right: 3px;
+    background: #4CAF50;
+    border-radius: 50px;
+    color: white;
+}
+
+.pagination li a {
+    color: black;
+}
+
 /*INACTIVE*/
 .inactive{
     background: rgb(181, 180, 173);
@@ -206,10 +279,6 @@ footer p{
     color: #93D3CC;
     font-size: 1.2em;
 }
-
-
-
-
 
 
 

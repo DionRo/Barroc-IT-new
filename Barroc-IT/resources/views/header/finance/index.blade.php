@@ -18,8 +18,7 @@
         <nav>
             <ul class="space-between">
                 <li><a href="/finance">Active Customers</a></li>
-                <li><a href="/finance/{show}">Inactive Customers</a></li>
-                <li class="no-border"><a href="#">Upload Invoice</a></li>
+                <li class="no-border"><a href="">Upload Invoice</a></li>
             </ul>
         </nav>
         <form class="search" action="">

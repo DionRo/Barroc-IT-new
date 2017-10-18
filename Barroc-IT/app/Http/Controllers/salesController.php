@@ -6,9 +6,21 @@ use App\customers;
 use Illuminate\Http\Request;
 use Faker\Factory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
 
-class saleController extends Controller
+class salesController extends Controller
 {
+
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,14 +28,27 @@ class saleController extends Controller
      */
     public function index()
     {
-        $sales = 2;
-        if (Auth::user()->adminLevel == $sales) {
+        $sales = 2 ;
+        if (Auth::user()->adminLevel == $sales)
+        {
+            $customersA = \App\Customers::whereHas('store', function ($query)
+            {$query->where('isActive', '=', 0);
+            })->paginate(10);
 
-            $customers = \App\Customers::All();
+            $customersI = \App\Customers::whereHas('store', function ($query)
+            {$query->where('isActive', '=', 1);
+            })->paginate(10);
+
 
             return view('sales/index')
-                ->with('customers', $customers);
-        } else {
+                ->with('customersA' , $customersA)
+                ->with('customersI', $customersI);
+
+
+
+        }
+        else
+        {
 
             $admin = 0;
             $finance = 1;
@@ -50,13 +75,11 @@ class saleController extends Controller
      */
     public function create()
     {
+
         $sales = 2 ;
         if (Auth::user()->adminLevel == $sales)
         {
-            $genders = ['Female', 'Male'];
-
-            return view('sales/add')
-                ->with('genders', $genders);
+            return view('sales/add');
         }
         else
         {
@@ -97,49 +120,44 @@ class saleController extends Controller
                 'phoneNumber' => 'required',
                 'address' => 'required',
                 'zipCode' => 'required',
-                'gender' => 'between:0,1'
+                'description' => 'string',
+                'gender' => ['male', 'female'],
+                'in_array' => 'gender'
             ]);
 
-            $customer = new \App\Customers();
+            $customer = new \App\Customer();
 
             $customer->firstName = $request->firstName;
             $customer->lastName = $request->lastName;
+
+            $companyId = DB::table('company')
+                ->select('id')
+                ->where('companyName', '==', $request->company)
+                ->get();
+
+            if (isset($request->middleName)) {
+                $this->validate($request, [
+                    'middleName' => 'string'
+                ]);
+                $customer->middleName = $request->middleName;
+            }
+
             $customer->address = $request->address;
             $customer->zipCode = $request->zipCode;
             $customer->email = $request->email;
             $customer->cellPhone = $request->phoneNumber;
-            $customer->gender = $request->gender;
 
-            $company = new \App\Company();
-            $companyName = $company::where('companyName', '=', $request->company)->first();
-            $companyId = $company::select('companyNr')->where('companyName', '=', $request->company)->get();
-            $companyCount = $company::all();
-
-            dd($companyCount);
-
-            if(isset($request->companyAddress) || isset($request->companyZipcode) || isset($request->comanyCountry)){
-                $this->validate($request, [
-                    'companyAddress' => 'required',
-                    'companyZipcode' => 'required',
-                    'companyCountry' => 'required'
-                ]);
-
-                $company->companyName = $request->company;
-                $company->adress = $request->companyAddress;
-                $company->zipcode = $request->companyZipcode;
-                $company->country = $request->companyCountry;
+            if ($request->gender == 'female') {
+                $customer->gender = 0;
+            }
+            if ($request->gender == 'male') {
+                $customer->gender = 1;
             }
 
-            if ($companyName == null){
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->with('message', '');
-            }
-            else{
-                $customer->companyNr = $companyId;
-                return redirect('sales');
-            }
+            $customer->description = $request->description;
+            $customer->save();
+
+            return redirect('projects');
         }
         else
         {
