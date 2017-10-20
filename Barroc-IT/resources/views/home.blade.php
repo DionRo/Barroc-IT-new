@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Dashboard @ BARROC-IT</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! Please wait untill an admin asigns you to your department, in order to use the system!
+                        <br>
+                    Thank you for your patience!
                 </div>
             </div>
         </div>

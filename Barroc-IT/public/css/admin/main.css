@@ -26,6 +26,17 @@ h1{
     -ms-align-items: center;
     align-items: center;
 }
+
+.flex-center
+{
+    text-align: center;
+    justify-content:center;
+}
+.flex-around
+{
+    justify-content: space-around;
+}
+
 .container{
     margin: 0 auto;
 }
@@ -114,9 +125,6 @@ h1{
     text-align: center;
 }
 
-.left{
-    width: 465px;
-}
 .main-content{
     display: -webkit-flex;
     display: -moz-flex;
@@ -152,9 +160,12 @@ table{
     font-style: bold;
 }
 /*Active*/
-.main-content{
-    padding: 20px 0;
+.right
+{
+    padding: 30px;
 }
+
+
 .sales-active{
     width: 55%;
     background: #FFF;
@@ -181,7 +192,7 @@ table{
     background: #FFF;
     position: relative;
     text-align: center;
-    width: 400px;
+    width: 600px;
 }
 
 .delete{
@@ -218,4 +229,34 @@ table{
 }
 .product-item:hover .adjust{
     display: block;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    position: relative;
+
+}
+
+.pagination li {
+    padding: 5px 10px;
+    margin-right: 3px;
+    background: #4CAF50;
+    border-radius: 50px;
+    color: white;
+}
+
+.pagination li a {
+    color: black;
+}
+.table-sizer {
+    width: 150px;
+}
+footer{
+    background: #006366;
+    padding: 5px;
+}
+footer p{
+    color: #93D3CC;
+    font-size: 1.2em;
 }

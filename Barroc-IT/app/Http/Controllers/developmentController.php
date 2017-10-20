@@ -31,12 +31,21 @@ class developmentController extends Controller
         $development = 3 ;
         if (Auth::user()->adminLevel == $development)
         {
-            $customers = \App\Customers::whereHas('orders', function ($query)
-            {$query->where('products', '!=', NULL);
-            })->paginate(10);
-            $orders = Orders::all();
+            $ordersN =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('isDone', '=', 1)
+                ->paginate(10);
 
-            return view('development/show', ['orders' => $orders], ['customers' => $customers]);
+            $ordersO =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('isDone', '=', 2)
+                ->paginate(10);
+
+
+
+            return view('development/index')
+                ->with('ordersN', $ordersN)
+                ->with('ordersO', $ordersO);
         }
         else
         {
@@ -70,7 +79,7 @@ class developmentController extends Controller
         $development = 3 ;
         if (Auth::user()->adminLevel == $development)
         {
-            return 'You are on the create page from the @ development section';
+
         }
         else
         {
@@ -138,7 +147,13 @@ class developmentController extends Controller
         $development = 3 ;
         if (Auth::user()->adminLevel == $development)
         {
-            return 'You are on the show page from the @ development section';
+            $orders =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('isDone', '=', 3)
+                ->paginate(10);
+
+            return view('development/done')
+                ->with('orders', $orders);
         }
         else
         {
@@ -207,7 +222,11 @@ class developmentController extends Controller
         $development = 3 ;
         if (Auth::user()->adminLevel == $development)
         {
-            return 'You are on the update page from the @ development section';
+            $update = \App\Orders::find($id);
+
+            $update->isDone = 2;
+            $update->save();
+            return redirect('development')->with('status', 'Project has been started');
         }
         else
         {
@@ -241,7 +260,90 @@ class developmentController extends Controller
         $development = 3 ;
         if (Auth::user()->adminLevel == $development)
         {
-            return 'You are on the destroy page from the @ development section';
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
+        }
+    }
+    public function done()
+    {
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            $orders =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('isDone', '=', 3)
+                ->paginate(10);
+
+            return view('development/done')
+                ->with('orders', $orders);
+        }
+        else
+        {
+            $admin = 0;
+            $finance = 1;
+            $sales = 2;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
+        }
+    }
+    public function finish()
+    {
+        $development = 3 ;
+        if (Auth::user()->adminLevel == $development)
+        {
+            $id = $_GET['adjust'];
+            $company  = $_GET['companyNr'];
+
+
+            $orders =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('id', '=', $id)
+                ->get();
+
+            $finance = DB::table('tbl_finance')
+                ->select(DB::raw('*'))
+                ->where('companyNr', '=', $company)
+                ->get();
+
+
+            $financeId = DB::table('tbl_finance')
+                ->select('id')
+                ->where([
+                    ['companyNr', '=', $company]])
+                ->first()
+                ->id;
+
+            $updateOrder = \App\Orders::find($id);
+            $updateOrder->isDone = 3;
+            $updateOrder->save();
+
+            return redirect('development')->with('succes', 'Order has been finished! Finance can now prepare payment');
         }
         else
         {

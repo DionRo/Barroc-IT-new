@@ -22,6 +22,9 @@ Route::resource('finance' ,'financeController');
 Route::resource('sales' ,'salesController');
 route::get('/invoice', 'financeController@invoice');
 route::get('invoice/Check', 'financeController@invoiceCheck');
+route::get('developement/finish', 'developmentController@finish');
+route::get('/developement/done', 'developmentController@done');
+route::get('/invoice/finish', 'financeController@finish');
 
 Auth::routes();
 
