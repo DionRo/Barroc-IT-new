@@ -288,4 +288,110 @@ class financeController extends Controller
             }
         }
     }
+
+    public function invoice()
+    {
+        $finance = 1;
+        if (Auth::user()->adminLevel == $finance) {
+
+           $orders =  DB::table('tbl_orders')
+               ->select(DB::raw('*'))
+               ->where('isDone', '=', 0)
+               ->paginate(10);
+
+            return view('finance/invoice')
+                ->with('orders', $orders);
+        }
+        else
+        {
+            $admin = 0;
+            $sales = 2;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
+        }
+    }
+    public function invoiceCheck()
+    {
+        $finance = 1;
+        if (Auth::user()->adminLevel == $finance) {
+
+            $id = $_GET['adjust'];
+            $company = $_GET['companyNr'];
+
+
+            $orders =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('id', '=', $id)
+                ->get();
+
+            $finance = DB::table('tbl_finance')
+                ->select(DB::raw('*'))
+                ->where('companyNr', '=', $company)
+                ->get();
+
+            if ($finance[0]->credit < $finance[0]->creditCeiling)
+            {
+                $totalCredit = $orders[0]->price + $finance[0]->credit;
+
+                if ($totalCredit <= $finance[0]->creditCeiling)
+
+                {
+                    $financeId = DB::table('tbl_finance')
+                        ->select('id')
+                        ->where([
+                            ['companyNr', '=', $company]])
+                        ->first()
+                        ->id;
+
+                    $update = \App\Finance::find($financeId);
+                    $update->credit = $orders[0]->price + $finance[0]->credit;
+                    $update->save();
+
+                    $updateOrder = \App\Orders::find($id);
+                    $updateOrder->isDone = 1;
+                    $updateOrder->save();
+
+
+
+                    return redirect('invoice')->with('status', 'Invoice Has Been Uploaded');
+                }
+                else
+                {
+                    return redirect('invoice')->with('failure', 'Invoice upload has failed due creditceiling current CreditCeiling: $'
+                        .$finance[0]->creditCeiling . ' CreditCeiling after invoice is ' . '$'. $totalCredit . ' You are not allowed to go over the creditceiling');
+                }
+            }
+            return redirect('invoice')->with('failure', 'Invoice Upload Has Failed Due CreditCeiling');
+
+        }
+        else
+        {
+            $admin = 0;
+            $sales = 2;
+            $development = 3;
+
+            if (Auth::user()->adminLevel == $admin) {
+                return redirect(action('adminpanelController@index'));
+            } elseif (Auth::user()->adminLevel == $finance) {
+                return redirect(action('financeController@index'));
+            } elseif (Auth::user()->adminLevel == $sales) {
+                return redirect(action('salesController@index'));
+            } elseif (Auth::user()->adminLevel == $development) {
+                return redirect(action('developmentController@index'));
+            } else {
+                return view('auth/login');
+            }
+        }
+    }
 }

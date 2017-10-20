@@ -147,7 +147,6 @@
                             data-bkr3="{{$customerN->company->BKR}}"
                             data-credit3="{{$customerN->company->credit}}"
                             data-credit-ceiling3="{{$customerN->company->creditCeiling}}"
-
                         >
                             <td class="table-sizer">{{$customerN->lastName}}, {{$customerN->firstName}}</td>
                             <td>{{$customerN->id}}</td>
