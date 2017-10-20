@@ -4,59 +4,140 @@
 <div class="container divide-light">
     <div class="main-content">
         <div class="left">
-            <br>
-            <h2>CREATE USER</h2>
-            <form action="../app/user_manager.php" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input class="text" type="text" class="form-control" name="username" placeholder="Fill in the username!">
+            <h2>ADD USERS</h2>
+            <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                {{ csrf_field() }}
+
+                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                    <label for="username" class="control-label">Username</label>
+                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}"
+                           required>
+
+                    @if ($errors->has('username'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input class="text" type="password" class="form-control" name="password" placeholder="Fill in the password!">
+                <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                    <label for="department" class="control-label">Department</label>
+                    <select class="form-control" name="department" value="{{ old('department') }}">
+                        <option value="0">Admin</option>
+                        <option value="1">Finance</option>
+                        <option value="2">Sales</option>
+                        <option value="3">Development</option>
+                    </select>
+
+                    @if ($errors->has('department'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('department') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="email">email:</label>
-                    <input class="text" type="email" class="form-control" name="email" placeholder="Fill in the email!">
+
+                <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
+                    <label for="firstName" class="control-label">Firstname</label>
+                    <input id="name" type="text" class="form-control" name="firstName" value="{{ old('firstName') }}"
+                           required autofocus>
+
+                    @if ($errors->has('firstName'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('firstName') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="name">Firstname:</label>
-                    <input class="text" type="text" class="form-control" name="firstname" placeholder="Fill in the firstname!">
+                <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                    <label for="lastName" class="control-label">Lastname</label>
+
+                    <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}"
+                           required autofocus>
+
+                    @if ($errors->has('lastName'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('lastName') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="name">Middlename:</label>
-                    <input class="text" type="text" class="form-control" name="middlename" placeholder="Fill in the Middlename!">
+
+
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label for="email" class="control-label">E-Mail Address</label>
+
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
+                           required>
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="name">lastname:</label>
-                    <input class="text" type="text" class="form-control" name="lastname" placeholder="Fill in the Lastname!">
+                <div class="form-group{{ $errors->has('zipcode') ? ' has-error' : '' }}">
+                    <label for="zipcode" class="control-label">Zipcode</label>
+
+                    <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}"
+                           required autofocus>
+
+                    @if ($errors->has('zipcode'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('zipcode') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input class="text" type="email" class="form-control" name="email" placeholder="Fill in the email!">
+
+                <div class="form-group{{ $errors->has('adress') ? ' has-error' : '' }}">
+                    <label for="adress" class="control-label">Adress</label>
+                        <input id="adress" type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autofocus>
+
+                        @if ($errors->has('adress'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('adress') }}</strong>
+                                    </span>
+                        @endif
                 </div>
-                <div class="form-group">
-                    <label for="email">Adress:</label>
-                    <input class="text" type="text" class="form-control" name="adress" placeholder="Fill in the adress">
+                <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                    <label for="country" class="control-label">Country</label>
+
+                    <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}"
+                           required autofocus>
+
+                    @if ($errors->has('country'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('country') }}</strong>
+                                    </span>
+                    @endif
                 </div>
-                <div class="form-group">
-                    <label for="email">Zipcode:</label>
-                    <input class="text" type="text" class="form-control" name="zipcode" placeholder="Fill in the zipcode!!">
+
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label for="password" class="control-label">Password</label>
+
+                    <input id="password" type="password" class="form-control" name="password" required>
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                    @endif
                 </div>
+
                 <div class="form-group">
-                    <label for="email">Country:</label>
-                    <input class="text" type="text" class="form-control" name="country" placeholder="Fill in the country!">
+                    <label for="password-confirm" class="control-label">Confirm Password</label>
+
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                           required>
                 </div>
+
                 <div class="form-group">
-                    <input type="submit" value="Create a user!" class="submit" name="register">
+                    <button type="submit" class="btn btn-primary">
+                        Register
+                    </button>
                 </div>
-                <!-- alle datums in een optie veld -->
             </form>
         </div>
+
         <div class="right">
-            <br>
             <h2>CURRENT USERS</h2>
-            <div class="container">
+            <div class="col-lg-12">
 
                 @foreach ($staffs as $staff)
                     <ul class="product-item">
@@ -74,7 +155,7 @@
                     </ul>
 
                 @endforeach
-                    {{ $staffs->links() }}
+                {{ $staffs->links() }}
             </div>
         </div>
     </div>

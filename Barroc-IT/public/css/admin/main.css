@@ -219,20 +219,3 @@ table{
 .product-item:hover .adjust{
     display: block;
 }
-
-.pagination{
-    display: flex;
-    justify-content: center;
-}
-
-.pagination li {
-    padding: 5px 10px;
-    margin-right: 3px;
-    background: #4CAF50;
-    border-radius: 50px;
-    color: white;
-}
-
-.pagination li a {
-    color: black;
-}

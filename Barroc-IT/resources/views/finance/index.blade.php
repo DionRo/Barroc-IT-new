@@ -95,7 +95,7 @@
 
                         >
                             <td class="table-sizer">{{$customerU->lastName}}, {{$customerU->firstName}}</td>
-                            <td>{{$customerU->id}}</td>S
+                            <td>{{$customerU->id}}</td>
                             <td>{{$customerU->companyNr}}</td>
                             <td>{{$customerU->status}}</td>
 
