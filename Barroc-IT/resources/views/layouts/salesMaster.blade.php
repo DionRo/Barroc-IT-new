@@ -24,8 +24,7 @@
         <nav>
             <ul class="space-between">
                 <li><a href="/sales">Customers</a></li>
-                <li><a href="/sales/create">Add Customers</a></li>
-                <li class="no-border"><a href="/sales/{}/edit">Edit Customers</a></li>
+                <li class="no-border"><a href="/sales/create">Add Customers</a></li>
             </ul>
         </nav>
 

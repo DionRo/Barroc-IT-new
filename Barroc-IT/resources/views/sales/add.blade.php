@@ -4,8 +4,8 @@
 </div>
 </header>
 <div class="main-content">
-    <div class="container">
-        <div class="add-customer">
+    <div class="add-customers">
+        <div class="container flex align-center flex-column">
             <h2>Add Customers</h2>
             {{$message = session('message')}}
             <form method="post" class="flex flex-column" action="/sales">
@@ -19,8 +19,10 @@
                     <input type="text" value="{{old('lastName')}}" name="lastName" required>
                 </div>
                 <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" value="{{old('company')}}" name="company">
+                    <div class="flex">
+                        <label for="company">Company</label>
+                        <input type="text" value="{{old('company')}}" name="company">
+                    </div>
                     @if(isset($message))
                     <div class="company-info">
                         <div class="form-group">

@@ -36,6 +36,19 @@
                             <td class="table-sizer">{{$customerA->lastName}}, {{$customerA->firstName}}</td>
                             <td>{{$customerA->id}}</td>
                             <td>{{$customerA->status}}</td>
+                            <td>
+                                <form method="GET" action="{{action('salesController@edit', $customerA->id)}}">
+                                    {{csrf_field()}}
+                                    <input type="submit" value="Edit">
+                                </form>
+                            </td>
+                            <td>
+                                <form method="GET" action="{{action('projectsController@index')}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" value="{{$customerA->id}}">
+                                    <input type="submit" value="Add Project">
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>

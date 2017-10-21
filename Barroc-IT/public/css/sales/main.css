@@ -55,7 +55,6 @@ span{
 .align-center{
     -ms-align-items: center;
     align-items: center;
-    text-align: center;
 }
 .container{
     margin: 0 auto;
@@ -231,12 +230,15 @@ table{
     padding: 80px 0;
 }
 /*ADD CUSTOMER*/
-.add-edit-customers{
-    padding: 80px 0;
+.add-customers{
     background: rgb(219, 218, 212);
 }
-.add-edit-customers h2{
+.add-customers .container{
+    padding: 70px 0 145px 0;
+}
+.add-customers h2{
     padding: 0 0 20px 0;
+    width: 560px;
 }
 .add-customers{
     border-right: 1px solid rgb(120, 120, 120);
@@ -249,11 +251,20 @@ table{
 }
 .add-customers input{
     padding: 10px 12px;
-    margin: 0 0 15px 0;  
-    width: 250px;
+    margin: 0 0 15px 0;
+    width: 350px;
     background: rgb(200, 200, 200);
     border: 1px solid rgb(90, 90, 90);
     border-radius: 5px;
+}
+.add-customers select, .add-customers option{
+    background: rgb(200, 200, 200);
+    padding: 10px 30px;
+    font-size: 1em;
+}
+.add-customers select{
+    font-size: 1.5em;
+    margin: 0 0 0 180px;
 }
 .add-customers .description input{
     padding: 10px 10px 100px 14px;
@@ -263,6 +274,7 @@ table{
     width: 100px;
     color: #93D3CC;
     background: #006366;
+    margin: 15px 0 0 180px;
 }
 /*EDIT CUSTOMER*/
 .edit-customers .search{
@@ -278,6 +290,7 @@ footer{
 footer p{
     color: #93D3CC;
     font-size: 1.2em;
+    text-align: center;
 }
 
 

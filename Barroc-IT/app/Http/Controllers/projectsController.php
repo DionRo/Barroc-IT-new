@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class projectsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,34 @@ class projectsController extends Controller
      */
     public function index()
     {
-        //
+//        $admin = 0;
+//        $finance = 1;
+//        $sales = 2;
+//        $development = 3;
+//
+//        if (Auth::user()->adminLevel == $admin)
+//        {
+//
+//        }
+//        elseif(Auth::user()->adminLevel == $finance)
+//        {
+//
+//        }
+//        elseif(Auth::user()->adminLevel == $sales)
+//        {
+//            return view('sales/projects');
+//        }
+//        elseif(Auth::user()->adminLevel == $development)
+//        {
+//
+//        }
+//        else
+//        {
+//
+//        }
+
+        return view('sales/projects');
+
     }
 
     /**
