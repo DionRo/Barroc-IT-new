@@ -28,7 +28,7 @@ class projectsController extends Controller
 
         if (Auth::user()->adminLevel == $admin)
         {
-
+            return view('admin/index');
         }
         elseif(Auth::user()->adminLevel == $finance)
         {

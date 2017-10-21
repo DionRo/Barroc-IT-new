@@ -9,12 +9,15 @@ use App\Http\Controllers\Controller;
 use Faker\Factory;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
 class adminpanelController extends Controller
 {
+    use SoftDeletes;
 
+    protected $dates = ['deleted_at'];
 
     public function __construct() {
         $this->middleware('auth');
@@ -161,7 +164,9 @@ class adminpanelController extends Controller
         $admin = 0 ;
         if (Auth::user()->adminLevel == $admin)
         {
-            return 'You are on the edit page from the @ admin section';
+            $staffs = \App\User::find($id);
+            return view('admin/adjust')
+                ->with('staff', $staffs);
         }
         else
         {
@@ -195,7 +200,21 @@ class adminpanelController extends Controller
         $admin = 0 ;
         if (Auth::user()->adminLevel == $admin)
         {
-            return 'You are on the update page from the @ admin section';
+            $staff = \App\User::find($id);
+
+            $staff->firstName = $request->first;
+            $staff->lastName = $request->last;
+            $staff->adminLevel = $request->department;
+            $staff->adress = $request->adress;
+            $staff->zipCode = $request->zipcode;
+            $staff->country = $request->country;
+            $staff->email = $request->email;
+
+            $staff->save();
+
+            return redirect('admin')->with('succes', 'User has been updated');
+
+
         }
         else
         {
@@ -228,7 +247,9 @@ class adminpanelController extends Controller
         $admin = 0 ;
         if (Auth::user()->adminLevel == $admin)
         {
-            return 'You are on the destroy page from the @ admin section';
+            \App\User::destroy($id);
+
+            return redirect('admin')->with('succes', 'User has been deleted!');
         }
         else
         {
