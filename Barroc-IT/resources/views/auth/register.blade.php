@@ -11,39 +11,6 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                            <label for="department" class="col-md-4 control-label">Department</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" name="department" value="{{ old('department') }}">
-                                    <option value="0">Admin</option>
-                                    <option value="1">Finance</option>
-                                    <option value="2">Sales</option>
-                                    <option value="3">Development</option>
-                                </select>
-
-                                @if ($errors->has('department'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('department') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
                             <label for="firstName" class="col-md-4 control-label">Firstname</label>
 

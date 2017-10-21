@@ -1,5 +1,11 @@
-@include('/header/finance/index')
+@extends('layouts/financeMaster')
 
+@section('title')
+    Home
+@endsection
+
+
+@section('content')
 <div class="main-content">
     <div class="positive">
         <div class="container">
@@ -8,10 +14,11 @@
             <div class="space-between">
                 <table class="sales-active" cellspacing="0" cellpadding="0">
                     <tr class="space-between title-table">
-                        <td>Name</td>
-                        <td>Customer number</td>
-                        <td>Company number</td>
-                        <td>Status</td>
+                        <td style="width: 25%;">Name</td>
+                        <td style="width: 22%;">Customer number</td>
+                        <td style="width: 22%;">Company number</td>
+                        <td style="width: 20%;">Status</td>
+                        <td style="width: 10%;">Update</td>
                     </tr>
                     @foreach($customers as $customer)
                         <tr class="space-between showinfo item-js"
@@ -34,7 +41,7 @@
                             <td>
                                 <form action="{{action('financeController@edit', $customer->id)}}" method="GET">
                                     {{csrf_field()}}
-                                    <input class="adjust" type="submit" value="adjust">
+                                    <input class="button-nice" type="submit" value="adjust">
                                     <input type="hidden" name="adjust" value="{{$customer->id}}">
                                 </form>
                             </td>
@@ -76,11 +83,11 @@
             <div class="space-between">
                 <table class="sales-active" cellspacing="0" cellpadding="0">
                     <tr class="space-between title-table">
-                        <td class="table-sizer">Name</td>
-                        <td>Customer number</td>
-                        <td>Company number</td>
-                        <td>Status</td>
-                        <td>Update</td>
+                        <td style="width: 25%;">Name</td>
+                        <td style="width: 22%;">Customer number</td>
+                        <td style="width: 22%;">Company number</td>
+                        <td style="width: 20%;">Status</td>
+                        <td style="width: 10%;">Update</td>
                     </tr>
                     @foreach($customersU as $customerU)
                         <tr class="space-between showinfo2 item-js2"
@@ -98,7 +105,13 @@
                             <td>{{$customerU->id}}</td>
                             <td>{{$customerU->companyNr}}</td>
                             <td>{{$customerU->status}}</td>
-
+                            <td>
+                                <form action="{{action('financeController@edit', $customerU->id)}}" method="GET">
+                                    {{csrf_field()}}
+                                    <input class="button-nice" type="submit" value="adjust">
+                                    <input type="hidden" name="adjust" value="{{$customerU->id}}">
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -132,10 +145,11 @@
             <div class="space-between">
                 <table class="sales-active" cellspacing="0" cellpadding="0">
                     <tr class="space-between title-table">
-                        <td class="table-sizer">Name</td>
-                        <td>Customer number</td>
-                        <td>Company number</td>
-                        <td>Status</td>
+                        <td style="width: 25%;">Name</td>
+                        <td style="width: 22%;">Customer number</td>
+                        <td style="width: 22%;">Company number</td>
+                        <td style="width: 20%;">Status</td>
+                        <td style="width: 10%;">Update</td>
                     </tr>
                     @foreach($customersN as $customerN)
                         <tr class="space-between showinfo3 item-js3"
@@ -147,12 +161,18 @@
                             data-bkr3="{{$customerN->company->BKR}}"
                             data-credit3="{{$customerN->company->credit}}"
                             data-credit-ceiling3="{{$customerN->company->creditCeiling}}"
-
                         >
                             <td class="table-sizer">{{$customerN->lastName}}, {{$customerN->firstName}}</td>
                             <td>{{$customerN->id}}</td>
                             <td>{{$customerN->companyNr}}</td>
                             <td>{{$customerN->status}}</td>
+                            <td>
+                                <form action="{{action('financeController@edit', $customerN->id)}}" method="GET">
+                                    {{csrf_field()}}
+                                    <input class="button-nice" type="submit" value="adjust">
+                                    <input type="hidden" name="adjust" value="{{$customerN->id}}">
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -182,4 +202,4 @@
     </div>
 </div>
 
-@include('/footer/index');
+@endsection

@@ -256,6 +256,15 @@ tr{
     padding: 10px 15px;
     border-top: 1px solid rgb(120, 120, 120);
 }
+
+td{
+    font-size: 1.5em;
+}
+tr{
+    background: rgb(220, 220, 220);
+    padding: 10px 15px;
+    border-top: 1px solid rgb(120, 120, 120);
+}
 table{
     border: none;
     border-bottom: 1px solid rgb(120, 120, 120);
@@ -268,6 +277,14 @@ table{
     font-size: 1.7em;
     font-style: bold;
 }
+.title-table{
+    background: rgb(210, 210, 210);
+}
+.title-table td{
+    font-size: 1.7em;
+    font-style: bold;
+}
+
 /*ACTIVE*/
 
 .login h1{
@@ -278,59 +295,14 @@ table{
     padding: 20px 0;
     background: rgb(219, 218, 212);
 }
-.active2
+
+.ongoing
 {
-    margin: 33px 0;
+    padding-top: 20px;
+    background: rgb(181, 180, 173);
 }
 .sales-active{
     width: 60%;
-}
-.sales-inactive{
-    width: 60%;
-}
-.sales-information{
-    background: rgb(220, 220, 220);
-    border-top: 1px solid rgb(120, 120, 120);
-    border-bottom: 1px solid rgb(120, 120, 120);
-    width: 35%;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-    visibility: hidden;
-}
-.sales-information-vis{
-    background: rgb(220, 220, 220);
-    border-top: 1px solid rgb(120, 120, 120);
-    border-bottom: 1px solid rgb(120, 120, 120);
-    width: 35%;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-    visibility: visible;
-}
-.sales-holdinformation{
-    background: rgb(220, 220, 220);
-    border-top: 1px solid rgb(120, 120, 120);
-    border-bottom: 1px solid rgb(120, 120, 120);
-    width: 35%;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-    visibility: hidden;
-}
-.sales-holdinformation-vis{
-    background: rgb(220, 220, 220);
-    border-top: 1px solid rgb(120, 120, 120);
-    border-bottom: 1px solid rgb(120, 120, 120);
-    width: 35%;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-    visibility: visible;
-}
-.sales-information ul{
-    padding: 15px;
-}
-.sales-information li{
-    font-size: 1.5em;
-    padding: 10px 20px 0 0;
-}
-/*INACTIVE*/
-.inactive{
-    background: rgb(181, 180, 173);
-    padding: 80px 0;
 }
 .pagination{
     display: flex;
@@ -355,164 +327,26 @@ table{
     width: 150px;
 }
 
-/* ==========================================================================
-   Login
-   ========================================================================== */
-.login .form {
-    background: rgba(19, 35, 47, 0.9);
-    padding: 40px;
-    max-width: 600px;
-    margin: 10px auto;
+.button-nice {
+    display: inline-block;
     border-radius: 4px;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-}
-
-.login .tab-group {
-    list-style: none;
-    margin: 0 0 40px;
-}
-.login .tab-group:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.login .tab-group li a {
-    display: block;
-    text-decoration: none;
-    padding: 15px;
-    background: rgba(160, 179, 176, 0.25);
-    color: #a0b3b0;
-    font-size: 20px;
-    float: left;
-    width: 95%;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
     text-align: center;
+    padding: 10px;
+    transition: all 0.5s;
     cursor: pointer;
-    -webkit-transition: .5s ease;
-    transition: .5s ease;
 }
-.login .tab-group li a:hover {
+
+footer{
     background: #006366;
-    color: #a0b3b0;
+    padding: 5px;
 }
-.login .tab-group .active a {
-    background: #006366;
-    color: #a0b3b0;
+footer p{
+    color: #93D3CC;
+    font-size: 1.2em;
 }
-
-.login .tab-content > div:last-child {
-    display: none;
-}
-
-.login label {
-    position: absolute;
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-    left: 13px;
-    color: rgba(255, 255, 255, 0.5);
-    -webkit-transition: all 0.25s ease;
-    transition: all 0.25s ease;
-    -webkit-backface-visibility: hidden;
-    pointer-events: none;
-    font-size: 22px;
-}
-.login label .req {
-    margin: 2px;
-    color: #006366;
-}
-
-.login label.active {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
-    left: 2px;
-    font-size: 14px;
-}
-.login label.active .req {
-    opacity: 0;
-}
-
-.login label.highlight {
-    color: #a0b3b0;
-}
-
-.login input, textarea, select {
-    font-size: 22px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 5px 0 5px;
-    background: none;
-    background-image: none;
-    border: 1px solid #a0b3b0;
-    color: rgba(255, 255, 255, 0.5);
-    border-radius: 0;
-    -webkit-transition: border-color .25s ease, box-shadow .25s ease;
-    transition: border-color .25s ease, box-shadow .25s ease;
-}
-.login input:focus, textarea:focus, select:focus {
-    outline: 0;
-    border-color: #006366;
-}
-.login select option{
-    background: rgba(19, 35, 47, 0.9);
-    color:rgba(255, 255, 255, 0.5);
-}
-.login select option:hover{
-    background: #006366;
-}
-.login textarea {
-    border: 2px solid #a0b3b0;
-    resize: vertical;
-}
-
-.login .field-wrap {
-    position: relative;
-    margin-bottom: 40px;
-}
-
-.login .top-row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.login .top-row > div {
-    float: left;
-    width: 48%;
-    margin-right: 4%;
-}
-.login .top-row > div:last-child {
-    margin: 0;
-}
-
-.login .button {
-    border: 0;
-    outline: none;
-    border-radius: 0;
-    padding: 15px 0;
-    margin: 1em 0;
-    font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    background: #006366;
-    color: #a0b3b0;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    -webkit-appearance: none;
-}
-.login .button:hover, .button:focus {
-    background: #00c9cc;
-}
-
-.login .button-block {
-    display: block;
-    width: 100%;
-}
-
-.login .forgot {
-    margin-top: -20px;
-    text-align: right;
-}
-
 
 /* ==========================================================================
    Helper classes
