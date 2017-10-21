@@ -39,14 +39,6 @@
                     @endif
                 </div>
                 <div class="form-group flex">
-                    <label for="address">Address</label>
-                    <input type="text" value="{{old('address')}}" name="address" required>
-                </div>
-                <div class="form-group flex">
-                    <label for="zipCode">Zip Code</label>
-                    <input type="text" value="{{old('zipCode')}}" name="zipCode" required>
-                </div>
-                <div class="form-group flex">
                     <label for="email">Email</label>
                     <input type="text" value="{{old('email')}}" name="email" required>
                 </div>
@@ -61,7 +53,6 @@
                         @endfor
                     </select>
                 </div>
-                {{old('gender')}}
                 <input class="submit" type="submit" value="Add">
             </form>
         </div>

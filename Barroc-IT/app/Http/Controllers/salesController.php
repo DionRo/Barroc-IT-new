@@ -75,11 +75,13 @@ class salesController extends Controller
      */
     public function create()
     {
-
         $sales = 2 ;
         if (Auth::user()->adminLevel == $sales)
         {
-            return view('sales/add');
+            $genders = ['female', 'male'];
+
+            return view('sales/add')
+                ->with('genders', $genders);
         }
         else
         {
@@ -118,46 +120,63 @@ class salesController extends Controller
                 'company' => 'required|string',
                 'email' => 'required|string',
                 'phoneNumber' => 'required',
-                'address' => 'required',
-                'zipCode' => 'required',
-                'description' => 'string',
-                'gender' => ['male', 'female'],
-                'in_array' => 'gender'
+                'gender' => 'between:0,1'
             ]);
 
-            $customer = new \App\Customer();
+            $customer = new \App\Customers();
 
             $customer->firstName = $request->firstName;
             $customer->lastName = $request->lastName;
-
-            $companyId = DB::table('company')
-                ->select('id')
-                ->where('companyName', '==', $request->company)
-                ->get();
-
-            if (isset($request->middleName)) {
-                $this->validate($request, [
-                    'middleName' => 'string'
-                ]);
-                $customer->middleName = $request->middleName;
-            }
-
-            $customer->address = $request->address;
-            $customer->zipCode = $request->zipCode;
             $customer->email = $request->email;
             $customer->cellPhone = $request->phoneNumber;
+            $customer->gender = $request->gender;
 
-            if ($request->gender == 'female') {
-                $customer->gender = 0;
+            $company = new \App\Company();
+            $companyName = $company::where('companyName', '=', $request->company)->first();
+
+            if(isset($request->companyAddress) || isset($request->companyZipcode) || isset($request->comanyCountry)){
+                $this->validate($request, [
+                    'companyAddress' => 'required',
+                    'companyZipcode' => 'required',
+                    'companyCountry' => 'required'
+                ]);
+                $company->companyName = $request->company;
+                $company->adress = $request->companyAddress;
+                $company->zipcode = $request->companyZipcode;
+                $company->country = $request->companyCountry;
+
+                $company->save();
+
+                $companyId = $company::select('companyNr')
+                    ->where('companyName', '=', $request->company)
+                    ->first()
+                    ->companyNr;
+
+                $customer->companyNr = $companyId;
+
+                $customer->save();
+
+                return redirect('sales');
             }
-            if ($request->gender == 'male') {
-                $customer->gender = 1;
+            else{
+                if ($companyName == null) {
+                    return redirect()
+                        ->back()
+                        ->withInput()
+                        ->with('message', '');
+                }
+                else{
+                    $companyId = $company::select('companyNr')
+                        ->where('companyName', '=', $request->company)
+                        ->first()
+                        ->companyNr;
+
+                    $customer->companyNr = $companyId;
+                    $customer->save();
+
+                    return redirect('sales');
+                }
             }
-
-            $customer->description = $request->description;
-            $customer->save();
-
-            return redirect('projects');
         }
         else
         {
