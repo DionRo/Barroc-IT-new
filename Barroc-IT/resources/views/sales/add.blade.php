@@ -23,23 +23,23 @@
                         <label for="company">Company</label>
                         <input type="text" value="{{old('company')}}" name="company">
                     </div>
+                </div>
                     @if(isset($message))
                     <div class="company-info">
                         <div class="form-group">
-                            <label for="">Company address</label>
-                            <input type="text" value="{{old('companyAddress')}}" name="companyAddress">
+                            <label for="companyAddress">Company address</label>
+                            <input class="company-input" type="text" value="{{old('companyAddress')}}" name="companyAddress">
                         </div>
                         <div class="form-group">
-                            <label for="">Company Zipcode</label>
-                            <input type="text" value="{{old('companyZipcode')}}" name="companyZipcode">
+                            <label for="companyZipcode">Company Zipcode</label>
+                            <input class="company-input" type="text" value="{{old('companyZipcode')}}" name="companyZipcode">
                         </div>
                         <div class="form-group">
-                            <label for="">Company Country</label>
-                            <input type="text" value="{{old('companyCountry')}}" name="companyCountry">
+                            <label for="companyCountry">Company Country</label>
+                            <input class="company-input" type="text" value="{{old('companyCountry')}}" name="companyCountry">
                         </div>
                     </div>
                     @endif
-                </div>
                 <div class="form-group flex">
                     <label for="email">Email</label>
                     <input type="text" value="{{old('email')}}" name="email" required>
