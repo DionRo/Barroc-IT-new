@@ -69,9 +69,18 @@ class ordersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'description' => 'required|string',
+            'companyId' => 'required|integer',
+            'description' => 'required|string',
             'price' => 'required'
         ]);
+
+        $order = new \App\Orders();
+
+        $order->companyNr = $request->companyId;
+        $order->products = $request->description;
+        $order->price = $request->price;
+
+        $order->save();
     }
 
     /**
