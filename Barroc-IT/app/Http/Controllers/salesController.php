@@ -78,7 +78,7 @@ class salesController extends Controller
         $sales = 2 ;
         if (Auth::user()->adminLevel == $sales)
         {
-            $genders = ['female', 'male'];
+            $genders = ['Female', 'Male'];
 
             return view('sales/add')
                 ->with('genders', $genders);
@@ -124,6 +124,7 @@ class salesController extends Controller
             ]);
 
             $customer = new \App\Customers();
+            $finance = new \App\Finance();
 
             $customer->firstName = $request->firstName;
             $customer->lastName = $request->lastName;
@@ -155,6 +156,9 @@ class salesController extends Controller
                 $customer->companyNr = $companyId;
 
                 $customer->save();
+
+                $finance->companyNr = $companyId;
+                $finance->save();
 
                 return redirect('sales');
             }

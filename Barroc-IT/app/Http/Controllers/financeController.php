@@ -437,6 +437,11 @@ class financeController extends Controller
             $updateOrder->isDone = 4;
             $updateOrder->save();
 
+            $customer = new \App\Customer();
+
+            $customer->isActive = 1;
+            $customer->save();
+
             return redirect('invoice')->with('payment', 'Order has been finished! Payment has been transfert');
         }
         else

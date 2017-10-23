@@ -130,7 +130,7 @@
                                 <form method="GET" action="{{action('ordersController@index')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="companyId" value="{{$customerI->companyNr}}">
-                                    <input type="hidden" name="customerId" value="{{$customerA->id}}">
+                                    <input type="hidden" name="customerId" value="{{$customerI->id}}">
                                     <input class="button-nice" type="submit" value="Add Order">
                                 </form>
                             </td>
