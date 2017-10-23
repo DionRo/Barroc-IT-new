@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class projectsController extends Controller
+class ordersController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +32,16 @@ class projectsController extends Controller
         }
         elseif(Auth::user()->adminLevel == $sales)
         {
-            return view('sales/projects');
+            $companyId = $_GET['companyId'];
+            $customerId = $_GET['customerId'];
+
+            $company = \App\Company::select('*')
+                ->where('companyNr', '=', $companyId)
+                ->first();
+
+            return view('sales/orders')
+                ->with('company', $company)
+                ->with('customerId', $customerId);
         }
         elseif(Auth::user()->adminLevel == $development)
         {
@@ -46,9 +51,6 @@ class projectsController extends Controller
         {
 
         }
-
-        return view('sales/projects');
-
     }
 
     /**
@@ -69,7 +71,26 @@ class projectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'companyId' => 'required|integer',
+            'customerId' => 'required|integer',
+            'description' => 'required|string',
+            'price' => 'required'
+        ]);
+
+        $order = new \App\Orders();
+        $customer = \App\Customers::find($request->customerId);
+
+        $order->companyNr = $request->companyId;
+        $order->products = $request->description;
+        $order->price = $request->price;
+
+        $customer->isActive = '1';
+
+        $order->save();
+        $customer->save();
+
+        return redirect('sales');
     }
 
     /**

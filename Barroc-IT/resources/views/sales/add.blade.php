@@ -8,7 +8,7 @@
         <div class="container flex align-center flex-column">
             <h2>Add Customers</h2>
             {{$message = session('message')}}
-            <form method="post" class="flex flex-column" action="/sales">
+            <form method="post" class="flex flex-column" action="{{action('salesController@store')}}">
                 {{csrf_field()}}
                 <div class="form-group flex">
                     <label for="firstName">First Name</label>
@@ -49,6 +49,7 @@
                     <input type="text" value="{{old('phoneNumber')}}" name="phoneNumber" required>
                 </div>
                 <div class="form-group">
+                    <label for="gender">Gender</label>
                     <select name="gender" id="gender">
                         @for($i = 0; $i < count($genders); $i++)
                             <option value="{{$i}}" @if(old('gender') == $i) selected="selected" @endif>{{$genders[$i]}}</option>
