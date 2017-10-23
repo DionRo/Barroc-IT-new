@@ -49,6 +49,7 @@
                     <input type="text" value="{{old('phoneNumber')}}" name="phoneNumber" required>
                 </div>
                 <div class="form-group">
+                    <label for="gender">Gender</label>
                     <select name="gender" id="gender">
                         @for($i = 0; $i < count($genders); $i++)
                             <option value="{{$i}}" @if(old('gender') == $i) selected="selected" @endif>{{$genders[$i]}}</option>
