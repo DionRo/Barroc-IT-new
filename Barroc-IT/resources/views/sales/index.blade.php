@@ -15,11 +15,11 @@
             <div class="space-between">
                 <table class="sales-active" cellspacing="0" cellpadding="0">
                     <tr class="space-between title-table">
-                        <td class="table-sizer2">Name</td>
+                        <td style="width: 15%;">Name</td>
                         <td>Customer number</td>
-                        <td>Status</td>
-                        <td></td>
-                        <td></td>
+                        <td style="width: 12%">Status</td>
+                        <td style="width: 8%">Edit</td>
+                        <td>Add Order</td>
                     </tr>
                     @foreach($customersA as $customerA)
                         <tr class="space-between showinfo4 item-js4"
@@ -41,14 +41,15 @@
                             <td>
                                 <form method="GET" action="{{action('salesController@edit', $customerA->id)}}">
                                     {{csrf_field()}}
-                                    <input type="submit" value="Edit">
+                                    <input class="button-nice" type="submit" value="Edit">
                                 </form>
                             </td>
                             <td>
                                 <form method="GET" action="{{action('ordersController@index')}}">
                                     {{csrf_field()}}
                                     <input type="hidden" name="companyId" value="{{$customerA->companyNr}}">
-                                    <input type="submit" value="Add Order">
+                                    <input type="hidden" name="customerId" value="{{$customerA->id}}">
+                                    <input class="button-nice" type="submit" value="Add Order">
                                 </form>
                             </td>
                         </tr>
@@ -96,9 +97,11 @@
             <div class="space-between">
                 <table class="sales-active" cellspacing="0" cellpadding="0">
                     <tr class="space-between title-table">
-                        <td class="table-sizer2">Name</td>
+                        <td style="width: 15%;">Name</td>
                         <td>Customer number</td>
-                        <td>Status</td>
+                        <td style="width: 12%">Status</td>
+                        <td style="width: 8%">Edit</td>
+                        <td>Add Order</td>
                     </tr>
                     @foreach($customersI as $customerI)
                         <tr class="space-between showinfo5 item-js5"
@@ -117,6 +120,20 @@
                             <td class="table-sizer">{{$customerI->lastName}}, {{$customerI->firstName}}</td>
                             <td>{{$customerI->id}}</td>
                             <td>{{$customerI->status}}</td>
+                            <td>
+                                <form method="GET" action="{{action('salesController@edit', $customerI->id)}}">
+                                    {{csrf_field()}}
+                                    <input class="button-nice" type="submit" value="Edit">
+                                </form>
+                            </td>
+                            <td>
+                                <form method="GET" action="{{action('ordersController@index')}}">
+                                    {{csrf_field()}}
+                                    <input  type="hidden" name="companyId" value="{{$customerI->companyNr}}">
+                                    <input type="hidden" name="customerId" value="{{$customerA->id}}">
+                                    <input class="button-nice" type="submit" value="Add Order">
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
