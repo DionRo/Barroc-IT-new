@@ -1,8 +1,6 @@
 @extends('layouts/salesMaster')
 
 @section('content')
-</div>
-</header>
 <div class="main-content">
     <div class="add-project">
         <div class="container">

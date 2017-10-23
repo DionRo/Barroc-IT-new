@@ -1,27 +1,25 @@
 @extends('layouts/salesMaster')
 
 @section('content')
-</div>
-</header>
 <div class="main-content">
     <div class="add-customers">
         <div class="container flex align-center flex-column">
             <h2>Edit: {{$customer->firstName}} {{$customer->lastName}}</h2>
             {{$message = session('message')}}
-            <form method="post" class="flex flex-column" action="/sales">
+            <form method="post" class="flex flex-column" action="{{action('salesController@update', $customer->id)}}">
                 {{csrf_field()}}
                 <div class="form-group flex">
                     <label for="firstName">First Name</label>
-                    <input type="text" value="@if($message) {{old('firstName')}} @else {{$customer->firstName}} @endif" name="firstName" required>
+                    <input type="text" value="@if(isset($message)) {{old('firstName')}} @else {{$customer->firstName}} @endif" name="firstName" required>
                 </div>
                 <div class="form-group flex">
                     <label for="lastName">Last Name</label>
-                    <input type="text" value="@if($message) {{old('lastName')}} @else {{$customer->lastName}} @endif" name="lastName" required>
+                    <input type="text" value="@if(isset($message)) {{old('lastName')}} @else {{$customer->lastName}} @endif" name="lastName" required>
                 </div>
                 <div class="form-group">
                     <div class="flex">
                         <label for="company">Company</label>
-                        <input type="text" value="@if($message) {{old('company')}} @else {{$customer->store->companyName}} @endif" name="company">
+                        <input type="text" value="@if(isset($message)) {{old('company')}} @else {{$customer->store->companyName}} @endif" name="company">
                     </div>
                     @if(isset($message))
                         <div class="company-info">
@@ -42,11 +40,11 @@
                 </div>
                 <div class="form-group flex">
                     <label for="email">Email</label>
-                    <input type="text" value="@if($message) {{old('email')}} @else {{$customer->email}} @endif" name="email" required>
+                    <input type="text" value="@if(isset($message)) {{old('email')}} @else {{$customer->email}} @endif" name="email" required>
                 </div>
                 <div class="form-group flex">
                     <label for="phoneNumber">Phone Number</label>
-                    <input type="text" value="@if($message) {{old('phoneNumber')}} @else {{$customer->cellPhone}} @endif" name="phoneNumber" required>
+                    <input type="text" value="@if(isset($message)) {{old('phoneNumber')}} @else {{$customer->cellPhone}} @endif" name="phoneNumber" required>
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender</label>
@@ -64,6 +62,7 @@
                     </select>
                 </div>
                 <input class="submit" type="submit" value="Edit">
+                {{method_field('PUT')}}
             </form>
         </div>
     </div>

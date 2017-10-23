@@ -283,10 +283,71 @@ class salesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sales = 2 ;
-        if (Auth::user()->adminLevel == $sales)
-        {
-            return 'You are on the update page from the @ sales section';
+        $sales = 2;
+        if (Auth::user()->adminLevel == $sales) {
+            $this->validate($request, [
+                'firstName' => 'required|string',
+                'lastName' => 'required|string',
+                'company' => 'required|string',
+                'email' => 'required|string',
+                'phoneNumber' => 'required',
+                'gender' => 'between:0,1'
+            ]);
+
+            $customer = \App\Customers::find($id);
+
+            $customer->firstName = $request->firstName;
+            $customer->lastName = $request->lastName;
+            $customer->email = $request->email;
+            $customer->cellPhone = $request->phoneNumber;
+            $customer->gender = $request->gender;
+
+            $company = \App\Company::find($id);
+            $companyName = $company::where('companyName', '=', $request->company)->first();
+
+            if(isset($request->companyAddress) || isset($request->companyZipcode) || isset($request->comanyCountry)){
+                $this->validate($request, [
+                    'companyAddress' => 'required',
+                    'companyZipcode' => 'required',
+                    'companyCountry' => 'required'
+                ]);
+                $company->companyName = $request->company;
+                $company->adress = $request->companyAddress;
+                $company->zipcode = $request->companyZipcode;
+                $company->country = $request->companyCountry;
+
+                $company->save();
+
+                $companyId = $company::select('companyNr')
+                    ->where('companyName', '=', $request->company)
+                    ->first()
+                    ->companyNr;
+
+                $customer->companyNr = $companyId;
+
+                $customer->save();
+
+                return redirect('sales');
+            }
+            else{
+                if ($companyName == null) {
+                    return redirect()
+                        ->back()
+                        ->withInput()
+                        ->with('message', '');
+                }
+                else{
+                    $companyId = $company::select('companyNr')
+                        ->where('companyName', '=', $request->company)
+                        ->first()
+                        ->companyNr;
+
+                    $customer->companyNr = $companyId;
+                    $customer->save();
+
+                    return redirect('sales');
+                }
+            }
         }
         else
         {
