@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class projectsController extends Controller
+class ordersController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +32,13 @@ class projectsController extends Controller
         }
         elseif(Auth::user()->adminLevel == $sales)
         {
-            return view('sales/projects');
+            $companyId = $_GET['companyId'];
+            $company = \App\Company::select('*')
+                ->where('companyNr', '=', $companyId)
+                ->first();
+
+            return view('sales/orders')
+                ->with('company', $company);
         }
         elseif(Auth::user()->adminLevel == $development)
         {
@@ -46,9 +48,6 @@ class projectsController extends Controller
         {
 
         }
-
-        return view('sales/projects');
-
     }
 
     /**
@@ -69,7 +68,10 @@ class projectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+           'description' => 'required|string',
+            'price' => 'required'
+        ]);
     }
 
     /**

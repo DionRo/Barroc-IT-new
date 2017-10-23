@@ -20,7 +20,7 @@ Route::resource('admin' ,'adminpanelController');
 Route::resource('development' ,'developmentController');
 Route::resource('finance' ,'financeController');
 Route::resource('sales' ,'salesController');
-Route::resource('projects', 'projectsController');
+Route::resource('orders', 'ordersController');
 
 route::get('/invoice', 'financeController@invoice');
 route::get('invoice/Check', 'financeController@invoiceCheck');

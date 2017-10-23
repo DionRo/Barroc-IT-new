@@ -242,7 +242,12 @@ class salesController extends Controller
         $sales = 2 ;
         if (Auth::user()->adminLevel == $sales)
         {
-            return view('sales/edit');
+            $customer = \App\Customers::find($id);
+            $genders = ['female', 'male'];
+
+            return view('sales/edit')
+                ->with('customer', $customer)
+                ->with('genders', 'genders');
         }
         else
         {

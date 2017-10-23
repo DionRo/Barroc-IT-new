@@ -18,6 +18,8 @@
                         <td class="table-sizer2">Name</td>
                         <td>Customer number</td>
                         <td>Status</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     @foreach($customersA as $customerA)
                         <tr class="space-between showinfo4 item-js4"
@@ -43,10 +45,10 @@
                                 </form>
                             </td>
                             <td>
-                                <form method="GET" action="{{action('projectsController@index')}}">
+                                <form method="GET" action="{{action('ordersController@index')}}">
                                     {{csrf_field()}}
-                                    <input type="hidden" value="{{$customerA->id}}">
-                                    <input type="submit" value="Add Project">
+                                    <input type="hidden" name="companyId" value="{{$customerA->companyNr}}">
+                                    <input type="submit" value="Add Order">
                                 </form>
                             </td>
                         </tr>

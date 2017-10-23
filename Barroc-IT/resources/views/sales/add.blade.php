@@ -8,7 +8,7 @@
         <div class="container flex align-center flex-column">
             <h2>Add Customers</h2>
             {{$message = session('message')}}
-            <form method="post" class="flex flex-column" action="/sales">
+            <form method="post" class="flex flex-column" action="{{action('salesController@store')}}">
                 {{csrf_field()}}
                 <div class="form-group flex">
                     <label for="firstName">First Name</label>
