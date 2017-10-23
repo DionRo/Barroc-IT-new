@@ -27,6 +27,8 @@
                 <li class="no-border"><a href="/sales/create">Add Customers</a></li>
             </ul>
         </nav>
+    </div>
+</header>
 
         @yield('content')
 
