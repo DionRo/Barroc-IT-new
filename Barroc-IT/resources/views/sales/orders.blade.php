@@ -15,6 +15,10 @@
                 </div>
                 <div class="form-group">
                     <label for="companyId"></label>
+                    <input type="hidden" name="customerId" value="{{$customerId}}">
+                </div>
+                <div class="form-group">
+                    <label for="companyId"></label>
                     <input type="hidden" name="companyId" value="{{$company->companyNr}}">
                 </div>
                 <div class="form-group">

@@ -33,12 +33,15 @@ class ordersController extends Controller
         elseif(Auth::user()->adminLevel == $sales)
         {
             $companyId = $_GET['companyId'];
+            $customerId = $_GET['customerId'];
+
             $company = \App\Company::select('*')
                 ->where('companyNr', '=', $companyId)
                 ->first();
 
             return view('sales/orders')
-                ->with('company', $company);
+                ->with('company', $company)
+                ->with('customerId', $customerId);
         }
         elseif(Auth::user()->adminLevel == $development)
         {
@@ -70,17 +73,24 @@ class ordersController extends Controller
     {
         $this->validate($request, [
             'companyId' => 'required|integer',
+            'customerId' => 'required|integer',
             'description' => 'required|string',
             'price' => 'required'
         ]);
 
         $order = new \App\Orders();
+        $customer = \App\Customers::find($request->customerId);
 
         $order->companyNr = $request->companyId;
         $order->products = $request->description;
         $order->price = $request->price;
 
+        $customer->isActive = '1';
+
         $order->save();
+        $customer->save();
+
+        return redirect('sales');
     }
 
     /**
