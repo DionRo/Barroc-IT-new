@@ -32,7 +32,9 @@ class ordersController extends Controller
         }
         elseif(Auth::user()->adminLevel == $sales)
         {
+
             $companyId = $_GET['companyId'];
+
             $customerId = $_GET['customerId'];
 
             $company = \App\Company::select('*')
@@ -85,7 +87,7 @@ class ordersController extends Controller
         $order->products = $request->description;
         $order->price = $request->price;
 
-        $customer->isActive = '1';
+        $customer->isActive = '0';
 
         $order->save();
         $customer->save();
