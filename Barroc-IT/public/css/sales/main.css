@@ -249,7 +249,7 @@ table{
     font-size: 1.7em;
     line-height: 1.8;
 }
-.add-customers input{
+.add-customers input, .company-input{
     padding: 10px 12px;
     margin: 0 0 15px 0;
     width: 350px;
