@@ -14,9 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in! Please wait untill an admin assigns you to your department, in order to use the system!
-                        <br>
-                    Thank you for your patience!
+                    <h3>You are logged in!</h3>
+
+                    <p>Please wait untill an admin assigns you to your department, in order to use the system!</p>
+
+                    <p>Thank you for your patience!</p>
                 </div>
             </div>
         </div>
