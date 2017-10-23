@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! Please wait untill an admin asigns you to your department, in order to use the system!
+                    You are logged in! Please wait untill an admin assigns you to your department, in order to use the system!
                         <br>
                     Thank you for your patience!
                 </div>

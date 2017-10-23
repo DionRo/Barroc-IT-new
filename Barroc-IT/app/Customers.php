@@ -10,7 +10,7 @@ class customers extends Model
 
     public function company()
     {
-    return $this->hasOne('App\Finance', 'companyNr');
+        return $this->hasOne('App\Finance', 'companyNr');
     }
     public function orders()
     {
