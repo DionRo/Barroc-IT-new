@@ -414,7 +414,7 @@ class financeController extends Controller
             $orders =  DB::table('tbl_orders')
                 ->select(DB::raw('*'))
                 ->where('id', '=', $id)
-                ->get();
+                ->first ();
 
             $finance = DB::table('tbl_finance')
                 ->select(DB::raw('*'))
@@ -428,21 +428,37 @@ class financeController extends Controller
                     ['companyNr', '=', $company]])
                 ->first()
                 ->id;
-
+            
             $update = \App\Finance::find($financeId);
-            $update->credit = $finance[0]->credit - $orders[0]->price ;
+            $update->credit = $finance[0]->credit - $orders->price ;
             $update->save();
 
             $updateOrder = \App\Orders::find($id);
             $updateOrder->isDone = 4;
             $updateOrder->save();
 
-            $customer = new \App\Customer();
+            $orders =  DB::table('tbl_orders')
+                ->select(DB::raw('*'))
+                ->where('id', '=', $id)
+                ->first ();
 
-            $customer->isActive = 1;
-            $customer->save();
 
-            return redirect('invoice')->with('payment', 'Order has been finished! Payment has been transfert');
+            if($orders->companyNr == $company && $orders->isDone != 4  )
+            {
+                return redirect('invoice')->with('payment', 'test');
+            }
+            else {
+
+                $customer = \App\Customers::select('*')
+                    ->where('companyNr', '=', $company)
+                    ->first();
+
+                $customer->isActive = 1;
+                $customer->save();
+
+                return redirect('invoice')->with('payment', 'Order has been finished! Payment has been transfert');
+            }
+
         }
         else
         {
