@@ -291,7 +291,7 @@ class salesController extends Controller
                 'company' => 'required|string',
                 'email' => 'required|string',
                 'phoneNumber' => 'required',
-                'gender' => 'between:0,1'
+                'gender' => 'required|between:0,1'
             ]);
 
             $customer = \App\Customers::find($id);

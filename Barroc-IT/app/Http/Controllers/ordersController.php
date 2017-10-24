@@ -77,7 +77,7 @@ class ordersController extends Controller
             'companyId' => 'required|integer',
             'customerId' => 'required|integer',
             'description' => 'required|string',
-            'price' => 'required'
+            'price' => 'required|integer'
         ]);
 
         $order = new \App\Orders();

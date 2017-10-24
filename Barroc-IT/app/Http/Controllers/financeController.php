@@ -217,6 +217,12 @@ class financeController extends Controller
         $finance = 1 ;
         if (Auth::user()->adminLevel == $finance)
         {
+            $this->validate($request,[
+               'BKR' => 'required|integer',
+               'credit' => 'required|integer',
+               'creiling' => 'required|integer',
+            ]);
+
             $customer = \App\Customers::find($id);
             $financeId = DB::table('tbl_finance')
             ->select('id')
