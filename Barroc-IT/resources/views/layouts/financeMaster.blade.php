@@ -29,10 +29,6 @@
                 <li class="no-border"><a href="/invoice">Upload Invoice</a></li>
             </ul>
         </nav>
-        <form class="search" action="">
-            <input class="search-button" type="button" name="search">
-            <input class="search-input" type="text" name="search" placeholder="Search...">
-        </form>
     </div>
 </header>
 

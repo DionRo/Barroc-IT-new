@@ -220,7 +220,7 @@ class financeController extends Controller
             $this->validate($request,[
                'BKR' => 'required|integer',
                'credit' => 'required|integer',
-               'creiling' => 'required|integer',
+               'ceiling' => 'required|integer',
             ]);
 
             $customer = \App\Customers::find($id);

@@ -1,4 +1,4 @@
-var done = false;
+    var done = false;
 $('.showinfo').click(function(){
     if (!done)
     {
@@ -184,7 +184,7 @@ function fill4(firstN, lastN, customer, status ,phone , email , company, country
         "                        <ul>\n" +
         "                        <li>First Name:</li>\n" +
         "                        <li>Last Name:</li>\n" +
-        "                        <li>Customer Number:</li>\n" +
+        "                        <li>CustomerNr:</li>\n" +
         "                        <li>Company name:</li>\n" +
         "                        <li>Email:</li>\n" +
         "                        <li>Phone Number:</li>\n" +
@@ -246,7 +246,7 @@ function fill5(firstN, lastN, customer, status ,phone , email , company, country
         "                        <ul>\n" +
         "                        <li>First Name:</li>\n" +
         "                        <li>Last Name:</li>\n" +
-        "                        <li>Customer Number:</li>\n" +
+        "                        <li>CustomerNr:</li>\n" +
         "                        <li>Company name:</li>\n" +
         "                        <li>Email:</li>\n" +
         "                        <li>Phone Number:</li>\n" +

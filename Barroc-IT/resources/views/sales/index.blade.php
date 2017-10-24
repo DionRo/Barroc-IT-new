@@ -58,7 +58,7 @@
                     <ul>
                         <li>First Name:</li>
                         <li>Last Name:</li>
-                        <li>Customer Number:</li>
+                        <li>CustomNr:</li>
                         <li>Company name:</li>
                         <li>Email:</li>
                         <li>Phone Number:</li>
